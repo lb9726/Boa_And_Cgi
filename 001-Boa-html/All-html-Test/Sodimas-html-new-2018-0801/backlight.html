@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>standy</title>
+        <script type="text/javascript" src="lib/jquery.js"></script>
+        <script type="text/javascript"src="lib/RangeSlider.js"></script>
+        <link rel="stylesheet" href="css/backlight.css" type="text/css">
+		<style>
+		.hlong*{
+		display:inline-block;vertical-align:middle
+		}
+		/*
+		body {
+			background:url(./images/rightBackground.png)  no-repeat center center;
+			background-size:cover;
+			background-attachment:fixed;			
+		}*/
+		</style>
+    </head>
+ 
+    <script>
+    function load()
+    {
+        console.log("is loading");
+    }
+    function unload()
+    {
+        console.log("is unloading");
+    }
+    </script>
+    <body onload="load()" onunload="unload()">
+        <div id="standy" class="hlong">
+		    
+            <img id="imgStandy" src="images/Normal.png" align="absmiddle"/ >
+			</br>
+		    </br>
+            <input type="range" id="normal" value="0" min="0" max="100" onchange="normalChangeSpeed()">&thinsp;   &thinsp;
+			<span id="normalCount" style="font-size: 50px;font-family: 宋体;">0</span>
+			<span style="font-size: 50px;font-family: 宋体;">%</span>
+			</br>
+			</br>
+			</br>
+			</br>
+			
+			<img src="images/Standby.png" align="absmiddle"/ >
+			</br>
+			</br>
+
+			<input type="range" id="standy22"  value="0"  min="0" max="100" onchange="standy22ChangeSpeed()">&thinsp;   &thinsp;
+			<span id="standy22Count" style="font-size: 50px;font-family: 宋体;">0</span>
+			<span style="font-size: 50px;font-family: 宋体;">%</span>
+			</br>
+			</br>
+			</br>
+			</br>
+			
+			<img src="images/Delay_before_Standby.png" align="absmiddle"/ >  
+			</br>
+		    </br>
+			<input type="range" id="delay_before_standy" value="0"  min="0" max="3600" onchange="delay_before_standyChangeSpeed()">&thinsp;   &thinsp;
+			<label id="delay_before_standyCount" style="font-size: 50px;font-family: 宋体;">0</label>
+			<span style="font-size: 50px;font-family: 宋体;">s</span>
+        </div>
+ 
+        <script>
+            var change = function($normal) {
+                /*内容可自行定义*/
+                console.log("234");
+            }
+			var change1 = function($normal) {
+                /*内容可自行定义*/
+                console.log("234");
+            }
+            $('#standy22').RangeSlider({ min: 0,   max: 100,  step: 0.1,  callback: change});
+            $('#normal').RangeSlider({ min: 0,   max: 100,  step: 0.1,  callback: change});
+            $('#delay_before_standy').RangeSlider1({ min: 0,   max: 80,  step: 0.1,  callback: change1});
+
+			
+	function normalChangeSpeed() {
+		var value = $('#normal').val();
+		$('#normalCount').html(parseInt(value));
+	};
+		function standy22ChangeSpeed() {
+		var value = $('#standy22').val();
+		$('#standy22Count').html(parseInt(value));
+	};
+	function delay_before_standyChangeSpeed() 
+	{
+		var value = $('#delay_before_standy').val();
+		console.log("value = ", parseFloat(value));
+		document.getElementById('delay_before_standyCount').innerHTML = value;
+	//	$('#delay_before_standyCount').innerHTML = parseInt(value);
+		//$('#delay_before_standyCount').html(parseInt(value));
+	};
+        </script>
+    </body>
+</html>

@@ -1,0 +1,3 @@
+ps -ef |grep adb
+sudo kill -9 进程ID
+sudo killall remmina

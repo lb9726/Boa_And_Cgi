@@ -1,0 +1,45 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta charset="utf-8" /> 
+<title></title> 
+<style> 
+body
+{ 
+	text-align: center;
+	background-color: silver
+} 
+.div
+{
+	margin:0 auto; 
+	width:400px; 
+	height:100px;
+	margin-top:18%
+} 
+/* css注释：为了观察效果设置宽度 边框 高度等样式 */ 
+</style> 
+</head> 
+<body> 
+<div id="autoTestBtn" class="div"> 
+<img id="autoTestImage" alt="start" src="images/bg_start.png" onclick="change_pic()"/>
+</div>
+<script>
+function change_pic()
+{
+console.log("is clicked");
+	var imgObj = document.getElementById("autoTestImage");
+	var imgSource = imgObj.src;
+		if (null === imgSource.match("bg_start.png"))
+		{
+			console.log("match is null imgSource", imgSource);
+			imgObj.src = "images/bg_start.png";
+		}
+		else
+		{
+			console.log("match isnot null imgSource", imgSource);
+			imgObj.src = "images/bg_stop.png";
+		}
+}
+</script>
+</body>
+</html>

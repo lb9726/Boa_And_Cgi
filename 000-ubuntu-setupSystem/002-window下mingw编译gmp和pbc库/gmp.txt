@@ -1,0 +1,7 @@
+gmp例子    GMP （开源数学运算库）
+https://blog.csdn.net/turingo/article/details/8249799
+https://gitee.com/skyfireitdiy/sf_rc/blob/master/src/sf_rc.cpp#L29
+https://blog.csdn.net/turingo/article/details/8249799  例子的用法
+
+
+

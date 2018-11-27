@@ -1,0 +1,8 @@
+ https://blog.csdn.net/shuaiAWP/article/details/46776545
+ 
+ cgi_header: unable to find LFLF
+ 出现以上的情况可能是 printf("Content-Type:text/html\n\n") 没有加\n\n导致的
+ 但是有的代码是cgic的库函数来做的，需要链接到库文件，所以需要把库文件放到/usr/lib下面去
+ 
+ 出现以上情况，总结来说就是以上的cgi程序有问题，没有正常执行到\n\n这个代码，需要调查具体原因
+ 比较隐藏的就是库文件的问题，并且cgi程序执行中crash了，也不会提示。只有不存在才会提示

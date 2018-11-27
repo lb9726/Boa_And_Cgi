@@ -1,0 +1,25 @@
+telnet 192.168.161.188
+ftp://192.168.161.188/home
+输入root
+
+
+gst-launch-1.0  playbin uri=file:///home/root/medias/la.avi video-sink="overlaysink rotate=90"
+
+
+  149  gst-launch-1.0 plabin uri=file:///home/root/medias/la.avi 
+  150  gst-launch-1.0 playbin uri=file:///home/root/medias/la.avi 
+  151  vi /usr/share/imx_6q_display_config 
+  152  sync
+  153  gst-launch-1.0 playbin uri=file:///home/root/medias/la.avi 
+  154  gst-launch-1.0 rotation=180 playbin uri=file:///home/root/medias/la.avi 
+  155  gst-inspect-1.0 playbin
+  156  gst-inspect-1.0 overlaysink
+  157  gst-launch-1.0 rotate=180 playbin uri=file:///home/root/medias/la.avi 
+  158  gst-inspect-1.0 playbin
+  159  gst-launch-1.0  playbin uri=file:///home/root/medias/la.avi video-sink="overlaysink rotate=180"
+  160  gst-launch-1.0  playbin uri=file:///home/root/medias/la.avi video-sink="overlaysink rotate=90"
+  
+触屏幕校准，删除文件后，开机第一次会自动显示要校准的界面
+删除：
+
+也可以在执行应用程序的脚本中执行后，进入触屏幕校准的

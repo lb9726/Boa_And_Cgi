@@ -1,0 +1,32 @@
+upt-mx6dl-eglfs-glibc-x86_64-meta-toolchain-qt5-cortexa9hf-neon-toolchain-4.1.15-2.0.1.sh
+
+upt-mx6dl-eglfs-glibc-x86_64-meta-toolchain-qt5-cortexa9hf-neon-toolchain-4.1.15-2.0.1.sh
+这里的两个编译链
+先修改权限，对这两个脚本增加可执行的权限，chmod *.sh u+x
+
+然后分别sudo ./upt-mx6dl-eglfs-glibc-x86_64-meta-toolchain-qt5-cortexa9hf-neon-toolchain-4.1.15-2.0.1.sh
+根据提示输入即可，等待安装完成后安装另一个
+
+sudo ./upt-mx6dl-eglfs-glibc-x86_64-meta-toolchain-qt5-cortexa9hf-neon-toolchain-4.1.15-2.0.1.sh
+
+使用时直接source /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/environment-setup-cortexa9hf-neon-poky-linux-gnueabi
+或者： source /opt/fsl-imx-fb/4.1.15-2.1.0/environment-setup-cortexa9hf-neon-poky-linux-gnueabi
+
+然后Qt项目中 qmake *.pro 
+生成对应平台的makefile后，再make
+
+可以根据需要配置成全局的命令
+在/etc/profile中可以配置成任意用户下的全局变量来使用，
+在/etc/profile 中追加 source /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/environment-setup-cortexa9hf-neon-poky-linux-gnueabi
+
+如果不想影响其他用户的使用，可以在~/.bashrc后面追加这条命令
+source /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/environment-setup-cortexa9hf-neon-poky-linux-gnueabi
+
+如果想单独在qt中配置套件来，可以找到对应的编译器和qmake的路径，配置成套件
+
+例如upt的编译的配置如下：
+编译器的路径：/opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/bin/arm-poky-linux-gnueabi/arm-poky-linux-gnueabi-gcc
+qmake的路径：
+/opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/qmake
+
+

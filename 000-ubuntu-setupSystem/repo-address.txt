@@ -1,0 +1,43 @@
+公司仓库
+git clone ssh://libo1@10.200.13.100:29418/ADB-7inch-Destination-Floor && scp -p -P 29418 libo1@10.200.13.100:hooks/commit-msg ADB-7inch-Destination-Floor/.git/hooks/
+
+git clone ssh://libo1@10.200.13.100:29418/BAN-17-0015/WindowAPP && scp -p -P 29418 libo1@10.200.13.100:hooks/commit-msg WindowAPP/.git/hooks/
+
+git clone ssh://libo1@10.200.13.100:29418/BAN-17-0015/ToolKit && scp -p -P 29418 libo1@10.200.13.100:hooks/commit-msg ToolKit/.git/hooks/
+
+官方源码仓库：
+url = https://github.com/DaveGamble/cJSON.git
+url = https://github.com/open-source-parsers/jsoncpp.git
+url = https://git.ffmpeg.org/ffmpeg.git
+git clone https://github.com/qtproject/qtftp
+url = https://github.com/slopjong/QuaZIP.git
+url = https://github.com/openssl/openssl.git
+
+个人仓库：
+
+url = git@github.com:lb9726/Classic-examples-of-practice.git
+url = git@github.com:lb9726/Boa_And_Cgi.git
+url = git@github.com:lb9726/Qt_project.git
+
+
+
+
+Please make sure you have the correct access rights
+and the repository exists.
+libo@ubuntu:~/Desktop/Repository/Boa_And_Cgi$ git pull
+ERROR: We're doing an SSH key audit.
+Reason: unverified automatically (private key found in a public repository)
+Please visit https://github.com/settings/keys/24349082
+to approve this key so we know it's safe.
+Fingerprint: e6:cf:c8:f4:ae:f1:5f:16:4f:d9:92:ce:1d:b2:71:21
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+libo@ubuntu:~/Desktop/Repository/Boa_And_Cgi$ git pull
+Already up-to-date.
+libo@ubuntu:~/Desktop/Repository/Boa_And_Cgi$ 
+
+
+Please visit https://github.com/settings/keys/24349082
+由于重装系统，ssh没有重新生成，有可能需要重新Approve一下，得访问互联网的github的设置界面进行设置。

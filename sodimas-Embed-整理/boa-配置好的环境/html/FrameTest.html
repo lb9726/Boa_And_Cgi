@@ -1,0 +1,20 @@
+<html>
+<script type="text/javascript">
+    function load()
+    {
+        console.log("is load framehtml");
+    }
+    function exit()
+    {
+        console.log("is exit ");
+    }
+</script>
+<frameset rows="15%,*" frameborder="0" >
+
+<frame src="./top.html" noresize="noresize" scrolling="no"  onload="load()"/>
+<frameset cols="220px,*"  onunload="exit()" frameborder="1" border="6px">
+<frame src="./left.html" noresize="noresize" scrolling="no" />
+<frame src="./volumeSetting.html" name="showFrame"/> 
+</frameset>
+</frameset>
+</html>

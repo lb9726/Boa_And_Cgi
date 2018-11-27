@@ -1,0 +1,69 @@
+1.安装git sudo apt-get install git 
+
+创建版本库，版本库有名仓库，英文名repository，你可以简单的理解为一个目录，这个目录
+里面的文件都可以被Git管理起来，每个文件的修改，删除，git都能追踪，以便在任意时刻都可以还原
+
+创建一个版本库非常简单，首先，选择一个合适的地方，创建一个空目录
+mkdir learnGit
+cd learnGit
+pwd
+git init
+
+Initialized empty Git repository in /user/michal/learnGit/.git/
+
+此时当前目录下多了一个.git目录，这个目录是Git来跟踪管理版本的。
+
+把文件添加到版本库
+git add readme.txt
+git commit -m "wrote a readme file"
+git commit 命令， -m后面输入的是本次提交提交的说明，可以输入任意内容，当然最好是
+有意义的，这样你就能从历史记录中方便地找到改动记录。
+
+
+为什么git添加文件需要add ，commit可以一次提交很多文件，所以你可以add不同的文件，比如： git add file1.txt 
+git add file1.txt file2.txt
+git commit -m 'add 2 files'
+
+
+时光穿梭：之前成功添加并提交一个readme.txt 文件，现在，我们继续修改readme.txt，
+改成如下内容：git is distributed version control system.
+Git is free software.
+现在运行git status 命令查看结果
+git status 命令可以让我们时刻掌握仓库当前的状态，上面的命令告诉我们，readme.txt被修改过，但是还没有准备提交的修改。
+
+git diff readme.txt, 查看对文件作了什么修改，而后可以放心提交
+git add readme.txt 
+git commit 之前在git status 将告诉我们被提交的修改包括readme.txt，然后git commit -m 'add distributed'提交后，我们再用 git status 命令查看仓库的当前状态 git 告诉我们当前已经没有需要提交的修改了，而且工作目录是干净的
+
+
+
+版本回退：像这样，不断对文件进行修改，然后不断提交修改到版本库里，每当你觉得文件修改到了一定程度的时候，就可以保存一个快照，这个快照在git中被称为commit. 一旦文件被改乱了，或者误删掉了，还可以从最近的一个commit中恢复，然后继续工作，而不是把几个月的工作成果全部丢失。
+
+git log 命令显示从最近到最远的提交日志，我们可以看到了3次提交，最近的一次提交是append GpL，上一个是add distributed，最早的一次是worte 啊readme file.如果嫌输出的信息太多了，看得眼花缭乱，可以加上 --pretty=oneline git log --pretty=oneline.
+
+
+git clean -fd 可以清除 ~.lock文件 删除文件和目录 -f 删除文件 -n显示将要删除的文件
+git rm 文件名 删除仓库中的文件，操作后要使用 git commit -m '备注'
+
+git reset -- 撤出缓冲区 git reflog 查看记录
+git reset --soft 版本号 (回退版本)  这种是不会把你本地的修改丢弃掉的
+
+
+有的时候会出现 fatal: CRLF would be replaced by LF in ...
+上述的提示是指 window和linux换行符号不一样
+使用dos2unix 解决这些问题即可，sudo apt-get install dos2unix
+然后走正常的add ， commit , push
+
+在本地删除一些东西时，提交修改可以是git commmit -am ''
+
+查看分支 git branch -r |grep Mile
+
+repo forall -c git checkout 分知名 17cy/MileStone/name 整个仓库切换分支
+repo forall -c git pull origin ... 同步代码
+repo forall -c git gc 清理仓库
+repo abandon 分支名
+
+
+
+
+

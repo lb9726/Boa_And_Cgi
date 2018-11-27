@@ -1,0 +1,46 @@
+<!DOCTYPE html>  
+<html>
+    <head>
+	<title>Layout</title>
+	<style type="text/css">@import "css/layout.css"</style>
+	
+	</head>
+    <script>
+    function load()
+    {
+        console.log("is loading");
+    }
+    function unload()
+    {
+        console.log("is unloading");
+    }
+    </script>
+    <body onload="load()" onunload="unload()">
+	  <form>
+	    <label id="Screen_Orientation">Screen Orientation:</label>
+		</br>
+		<input name="orirntation" id="orirntation_90" type="radio" value=""/>
+	    <label for="orirntation_90" id="label_90" style="padding-right:40px">90</label>
+	    
+		<input name="orirntation"  id="orirntation_180" type="radio" value=""/>
+	    <label for="orirntation_180" id="label_180" style="padding-right:40px">180</label>
+		
+		<input name="orirntation" id="orirntation_270" type="radio" value=""/>
+	    <label for="orirntation_270" id="label_270">270</label>
+		
+		</br>
+		</br><label id="Screen_size">Screen Size:</label></br>
+		<input name="screenSize" id="screenSize_4.3" type="radio" value=""/>
+	    <label for="screenSize_4.3" id="label_4.3">4.3inch</label>
+	    <input name="screenSize" id="screenSize_4.0" type="radio" value=""/>
+	    <label for="screenSize_4.0" id="4.0">4.0inch</label>
+		
+		</br>
+		</br><label id="Screen_layout">Screen Layout:</br>
+		<input name="screenLayout" id="arrow" type="radio" value=""/>
+	    <label for="arrow" id="label_arrow" style="padding-right:50px">Arrow</label>
+	    <input name="screenLayout" id="floor" type="radio" value=""/>
+	    <label for="floor" id="label_floor">Floor</label>
+	  </form>
+	</body>
+</html>

@@ -1,0 +1,21 @@
+https://crypto.stanford.edu/pbc/download.html
+
+https://crypto.stanford.edu/pbc/manual.pdf
+
+参考网址配置的如下：https://blog.csdn.net/trustbo/article/details/10948139
+ ./configure LDFLAGS="-L/home/Administrator/gmp_lib -lgmp-10" CPPFLAGS="-I/home/Administrator/gmp_include" -disable-static -enable-shared
+
+后来将gmp的make install 了一下
+https://blog.csdn.net/winnerx/article/details/24721971
+
+export LDFLAGS="-L/usr/local/lib"
+./configure --enable-shared --disable-static
+make
+编译成功
+
+
+https://wenku.baidu.com/view/eeb9262f31b765ce050814fa.html?qq-pf-to=pcqq.c2c
+https://blog.csdn.net/qq_36291381/article/details/80573344
+
+https://blog.csdn.net/u012136352/article/details/75738924
+https://blog.csdn.net/u013983667/article/details/54582126

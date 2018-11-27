@@ -1,0 +1,159 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta charset="utf-8" /> 
+<title></title> 
+<style> 
+/*
+body
+{ 
+	text-align: center;
+	background:url(./images/rightBackground.png) no-repeat center center;
+	background-size:cover;
+	background-attachment:fixed;
+}
+*/
+
+.div
+{
+	margin: 0 auto; 
+	width: 400px; 
+	height: 100px;
+	margin-top: 18%
+} 
+/* css注释：为了观察效果设置宽度 边框 高度等样式 */ 
+</style>
+<script type="text/javascript" src="lib/global.js"></script>
+</head>
+
+<script>
+    function load()
+    {        
+        setAllParameter();
+        console.log("is loading");
+    }
+    function unload()
+    {
+        console.log("is unloading");
+    }
+</script>
+
+<body onload="load()" onunload="unload()"> 
+<div id="autoTestBtn" class="div"> 
+<img id="autoTestImage" alt="start" src="images/bg_start.png" onclick="changePic()"/>
+</div>
+<script>
+function changePic()
+{
+    console.log("is clicked");
+	var imgObj = document.getElementById("autoTestImage");
+	var imgSource = imgObj.src;
+	if (null === imgSource.match("bg_start.png"))
+	{
+	    console.log("match is null imgSource", imgSource);			
+	    imgObj.src = "images/bg_start.png";
+	    setAutoTestFlag(0);
+	}
+	else
+	{
+	    console.log("match isnot null imgSource", imgSource);
+	    imgObj.src = "images/bg_stop.png";
+	    setAutoTestFlag(1);
+	}
+}
+
+function setAllParameter()
+{
+    var tmpLanguageOption = getLanguageValue();
+	console.log("tmpLanguageOption = ", tmpLanguageOption);
+	if (1 == tmpLanguageOption)
+	{
+		    
+	}
+    var isStart = getAutoTestFlag();
+    console.log("isStart = ", isStart);
+    /*0 is start, 1 is stop default is start*/
+    var imgObj = document.getElementById("autoTestImage");
+	if (1 == isStart)
+	{
+		imgObj.src = "images/bg_stop.png";
+		console.log("is stop png");
+	}
+	else
+	{
+	    imgObj.src = "images/bg_start.png";
+	    console.log("is start png");
+	}
+}
+
+function loadJsonDoc(url, index)
+{
+    var xmlhttp;
+    var txt,x,xx,i;
+    if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    }
+    else
+    {// code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function()
+    {
+        console.log("is onreadystatechange");
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+        {
+            console.log("is can get information");
+            var str = xmlhttp.responseText;
+            console.log("str = ", str);
+        }
+    }
+    var text;
+    if (0 === index)
+    {
+        text = '{"type":"setparameter","info":{"admusicvol":30}}';
+    }
+    else if (1 === index)
+    {
+        text = '{"type":"setparameter","info":{"admusicvol":0}}';
+    }
+    else if (2 === index)
+    {
+        text = '{"type":"setparameter","info":{"luminance":0}}';
+    }
+	else if (3 === index)
+    {
+        text = '{"type":"setparameter","info":{"luminance":40}}';
+    }
+    else if (4 === index)
+    {
+        text = '{"type":"setparameter","info":{"autotest":true}}';
+    }
+    else if (5 === index)
+    {
+        text = '{"type":"setparameter","info":{"autotest":false}}';
+    }
+    else if (6 === index)
+    {
+        text = '{"type":"setparameter","info":{"layout":0}}';
+    }
+    else if (7 === index)
+    {
+        text = '{"type":"setparameter","info":{"layout":1}}';
+    }
+    else if (8 === index)
+    {
+        text = '{"type":"setparameter","info":{"rotation":90}}';
+    }
+    else if (9 === index)
+    {
+        text = '{"type":"setparameter","info":{"rotation":180}}';
+    }
+    console.log("text = ", text);
+    xmlhttp.open("POST", url, true);
+    xmlhttp.send(text);
+}
+
+</script>
+</body>
+</html>

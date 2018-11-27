@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Test-html-to-cgi</title>
+
+<script type="text/javascript">
+function loadXMLDoc(url, index)
+{
+    var xmlhttp;
+    var txt,x,xx,i;
+    if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    }
+    else
+    {// code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function()
+    {
+        console.log("is onreadystatechange");
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+        {
+            console.log("is can get information");
+            var str = xmlhttp.responseText;
+            console.log("str = ", str);
+        }
+    }
+    var text;
+    if (0 === index)
+    {
+        text = '{"type":"sendallparameter","info":{"admusicvol":30}}';
+    }
+    else if (1 === index)
+    {
+        text = '{"type":"sendallparameter","info":{"admusicvol":0}}';
+    }
+    else if (2 === index)
+    {
+        text = '{"type":"sendallparameter","info":{"luminance":0}}';
+    }
+	else if (3 === index)
+    {
+        text = '{"type":"sendallparameter","info":{"luminance":40}}';
+    }
+    else if (4 === index)
+    {
+        text = '{"type":"sendallparameter","info":{"autotest":true}}';
+    }
+    else if (5 === index)
+    {
+        text = '{"type":"sendallparameter","info":{"autotest":false}}';
+    }
+    else if (6 === index)
+    {
+        text = '{"type":"sendallparameter","info":{"layout":0}}';
+    }
+    else if (7 === index)
+    {
+        text = '{"type":"sendallparameter","info":{"layout":1}}';
+    }
+    else if (8 === index)
+    {
+        text = '{"type":"sendallparameter","info":{"rotation":90}}';
+    }
+    else if (9 === index)
+    {
+        text = '{"type":"sendallparameter","info":{"rotation":180}}';
+    }
+    console.log("text = ", text);
+    xmlhttp.open("POST", url, true);
+    xmlhttp.send(text);
+}
+</script>
+
+</head>
+<body>
+
+<div id="volumeBig">
+<button onclick="loadXMLDoc('../cgi-bin/TestcgiMainQt', 0)">setting volume big</button>
+</div></br>
+
+<div id="volumeZero">
+<button onclick="loadXMLDoc('../cgi-bin/TestcgiMainQt', 1)">setting volume Mute</button>
+</div></br>
+
+<div id="backlight0">
+<button onclick="loadXMLDoc('../cgi-bin/TestcgiMainQt', 2)">Backlight black</button>
+</div></br>
+
+<div id="backlight1">
+<button onclick="loadXMLDoc('../cgi-bin/TestcgiMainQt', 3)">Backlight Bright</button>
+</div></br>
+
+<div id="autoTestT">
+<button onclick="loadXMLDoc('../cgi-bin/TestcgiMainQt', 4)">autoTest true</button>
+</div></br>
+
+<div id="autoTestF">
+<button onclick="loadXMLDoc('../cgi-bin/TestcgiMainQt', 5)">autoTest false</button>
+</div></br>
+
+<div id="layout0">
+<button onclick="loadXMLDoc('../cgi-bin/TestcgiMainQt', 6)">layout 0</button>
+</div></br>
+
+<div id="layout1">
+<button onclick="loadXMLDoc('../cgi-bin/TestcgiMainQt', 7)">layout 1</button>
+</div></br>
+
+<div id="rotation90">
+<button onclick="loadXMLDoc('../cgi-bin/TestcgiMainQt', 8)">rotation 90</button>
+</div></br>
+
+<div id="rotation180">
+<button onclick="loadXMLDoc('../cgi-bin/TestcgiMainQt', 9)">rotation 180</button>
+</div></br>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+http://man.linuxde.net/netstat
+sudo netstat -ap |grep 80  能够查出端口号
+
+
+sudo netstat -ap | grep boa
+
+
+找出运行在指定端口的进程：
+netstat -an | grep ':80'
+
+
+或者已经知道进程的确切名称，可以用pidof查看： 
+libo@ubuntu:~/Desktop/Repository/Qt_project$ ps -ef |grep "boa"
+libo      2335  2100  0 19:03 ?        00:00:00 /usr/lib/x86_64-linux-gnu/indicator-keyboard-service --use-gtk
+root      3148  2100  0 19:09 pts/13   00:00:00 /usr/bin/boa
+libo      3543  3015  0 19:21 pts/6    00:00:00 grep --color=auto boa
+libo@ubuntu:~/Desktop/Repository/Qt_project$ pidof boa
+3148
+libo@ubuntu:~/Desktop/Repository/Qt_project$ 
+
+
+查看到进程id之后，使用netstat命令查看其占用的端口： 
+libo@ubuntu:~/Desktop/Repository/Qt_project$ sudo netstat -nap | grep 3148
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      3148/boa        
+libo@ubuntu:~/Desktop/Repository/Qt_project$ 
+
+
+-n或--numeric：直接使用ip地址，而不通过域名服务器；
+libo@ubuntu:~/Desktop/Repository/Qt_project$ sudo netstat -nap | grep 3148
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      3148/boa        
+libo@ubuntu:~/Desktop/Repository/Qt_project$ sudo netstat -ap | grep 3148
+tcp        0      0 *:http                  *:*                     LISTEN      3148/boa        
+libo@ubuntu:~/Desktop/Repository/Qt_project$ 
+
+

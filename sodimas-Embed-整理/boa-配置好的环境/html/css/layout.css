@@ -1,0 +1,43 @@
+.bigText{
+	color: #185175;
+	font-size: 30px;
+}
+.smallText{
+	color: #185175;
+	font-size: 20px;
+}
+.radio {
+ margin-top: 5%;
+ margin-left: 8%;
+}
+.radio input{
+        display: none;/*取消默认样式*/
+}   
+.radio input+label {    /*紧接input出现的label，要有相同父元素*/
+        display: inline-block;
+        position: relative;
+        border-radius: 50%;
+        border: 2px #aaa solid;
+        width: 20px;   /*外圈圆高度、宽度*/
+        height: 20px; 
+}
+.radio input+label::after {  /*伪元素制作内部的圆*/
+        content: " ";
+        border-radius: 50%;
+        position: absolute;/*居中方法*/
+        top: 50%;
+        left: 50%;
+        width: 12px; /*中心圆的宽度、高度*/
+        height: 12px;
+        margin-top: -6px;
+        margin-left: -6px;
+		padding: 0
+}
+
+.radio input:checked+label {
+        background-color: white;/*选中后外圈圆颜色*/
+        border-color: #185175;
+}  
+.radio input:checked+label::after {   
+        background-color: #185175;/*选中radio中心圆的颜色*/
+}

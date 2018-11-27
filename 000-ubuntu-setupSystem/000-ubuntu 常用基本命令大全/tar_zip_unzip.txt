@@ -1,0 +1,73 @@
+ubuntu 下的几个解压命令
+安装工具
+压缩功能
+安装 sudo apt-get install rar
+卸载 sudo apt-get remove rar
+
+解压功能
+安装 sudo apt-get install unrar
+卸载 sudo apt-get remove unrar
+
+unrar x MedieaScreenHelper.rar media/  解压到指定的目录下media/
+安装完成之后不使用命令的话，则右击Extract Here即可
+
+.gz
+解压1：gunzip FileName.gz
+解压2：gzip -d FileName.gz
+压缩：gzip FileName 这个只能是压缩文件，而且这个文件会在压缩后消失
+gzip sodimas.txt  生成sodimas.txt.gz文件 sodimas.txt 文件消失
+gunzip sodimas.txt.gz  命令同样是会使得源文件消失
+
+为了保留原有的文件，我们可以加上 -c 选项并利用 linux 的重定向 
+gzip -c sodimas.txt > so1 生成一个so1，源文件仍然存在
+
+gunzip -c so1 > new so1解压到new的文件中
+
+
+zip
+压缩
+zip so2 sodimas.txt 将sodimas.txt 文件压缩到so2.zip文件中
+zip so3.zip sodimas.txt
+
+zip -r dest others/ 压缩当前的文件夹 zip -r ./xahot.zip ./* -r表示递归
+前面的dest 是生成在当前路径下的dest.zip 文件 ，后面的others/ 是本路径下的一个目录
+
+
+解压：
+unzip so3.zip 它会默认将文件解压到当前目录，如果要解压到指定目录，可以加上 -d 选项 
+unzip so3.zip -d mm  
+
+
+.tar
+解包：tar xvf FileName.tar
+打包：tar cvf FileName.tar DirName
+注：tar是打包，不是压缩！
+
+.tar.gz     格式解压为          tar   -zxvf   xx.tar.gz
+.tar.bz2    格式解压为          tar   -jxvf    xx.tar.bz2
+
+
+  最近在部署环境，在安装memcached的过程中解压时，
+
+ 解压命令：tar -zvxf memcached-1.4.34.tar.gz
+
+遇到了一个问题，
+
+　　gzip: stdin: not in gzip format
+
+　　tar: Child returned status 1
+
+　　tar: Error is not recoverable: exiting now
+
+ 现在我提供一下我总结的解决方法：
+
+方法一：
+
+#tar -vxf memcached-1.4.34.tar.gz
+
+ tar包压缩的时候用cvf参数，解压的时候用xvf参数
+或压缩的时候用czvf参数，解压的时候用xzvf参数
+
+bz 包遇到了，就把z参数换成相应j参数
+
+当然，如果你和我一样方法一都没有解决你的问题，那么看方法二。看下图，本宝宝就是这么衰没解决。

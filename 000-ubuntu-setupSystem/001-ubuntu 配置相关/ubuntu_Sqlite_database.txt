@@ -1,0 +1,21 @@
+Linux平台上SQLite数据库教程（一）——终端使用篇
+SQLite是一款轻型的数据库，它的设计目标是嵌入式的，而且目前已经在很多嵌入式产品中使用了它，它占用资源非常的低，可能只需要几百K的内存就够了。能够支持Windows/Linux/Unix等等主流的操作系统，同时能够跟很多程序语言相结合，比如 Tcl、C#、PHP、Java等，还有ODBC接口。
+
+安装
+在终端输入：
+
+sudo apt-get install sqlite3
+1
+一般系统中自带，不需要手动安装。
+
+我们也可以选择安装图形界面程序，如sqlitebrowser：
+
+sudo apt-get install sqlitebrowser
+1
+安装完成后，查看版本：
+
+sqlite3 -version
+1
+到这里，我们的安装告一段落。
+
+

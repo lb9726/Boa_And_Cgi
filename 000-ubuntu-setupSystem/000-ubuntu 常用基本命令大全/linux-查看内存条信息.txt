@@ -1,0 +1,4 @@
+sudo dmidecode -t memory|grep Size
+
+free -h 查看内存
+df -h   查看硬盘

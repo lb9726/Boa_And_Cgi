@@ -1,0 +1,298 @@
+﻿http://192.168.8.202/release_check/index?project_id=cy_release
+
+logcfg -c uidisc:D videofocus:D && logcat -s uidisc videofocus
+
+
+logcfg -c uidisc:D MediaDisc:D nmdiscservice:D nmdisclib:D && logcat -s uidisc MediaDisc nmdiscservice nmdisclib
+logcfg -c uidisc:D MediaDisc:D nmdiscservice:D nmdisclib:D list:D && logcat -s uidisc MediaDisc nmdiscservice nmdisclib list 
+
+
+provider_tool content://system/info -u -kv 1 vehicle/operestrict -s on
+
+provider_tool content://system/info -u -kv 1 vehicle/videorestrict -s on
+
+    
+更改走行规制状态off：
+
+provider_tool content://system/info -u -kv 1 vehicle/operestrict -s off
+
+provider_tool content://system/info -u -kv 1 vehicle/videorestrict -s off
+
+
+wldebug
+5
+
+subMicon:　　　DCUM2NSH4.PRG
+
+
+FC .so的编译步骤：
+1,进入17cy下，source build/envsetup.sh
+2.lunch
+3. 对应机器型号
+4,make libnqfnctlmediadisc-all -j8
+5, adb connect
+6, adb remount
+7, adb push /17Cy/out/target/product/e2/system/usr/lib/libnqfnctlmediadisc.so /usr/lib
+8, adb shell sync
+
+logcfg -c nmdiscservice:D nmdisclib:D
+logcat -s nmdiscservice nmdisclib
+logcfg -c MediaDisc:D uidisc:D;logcat -s MediaDisc uidisc
+
+Suntec側再現できません。 
+以下のLogを取得していただけませんか。  
+
+陈彬彬,FC 的 log：
+logcfg -c uidisc:D nmdiscservice:D nmdisclib:D MediaDisc:D && logcat -s uidisc:D nmdiscservice:D nmdisclib:D MediaDisc:D
+logcfg -c uidisc:D nmdiscservice:D nmdiscparser:D MediaDisc:D && logcat -s uidisc:D nmdiscservice:D nmdiscparser:D MediaDisc:D
+logcfg -c uidisc:D nmdiscservice:D nmdiscparser:D  && logcat -s uidisc:D nmdiscservice:D nmdiscparser:D MediaDisc:D
+
+\\172.26.10.6\gold$\pset\group\NaviDevelop\Group\QtUI\17cy\Request\20151112_T2开发依赖\
+
+
+
+S-0027K3
+
+芈月传81集下载
+
+
+http://www.qingniantuzhai.com/posts/2814.html
+
+
+logcfg -c *:D;logcat -s MediaDisc uidisc
+
+
+
+升级log卡在“BIOS：ef7e0000 S-BIOS：ef7d0000"
+解决方法： copy uboot_image.bin文件到u盘根目录， 进入uboot命令，输入
+usb start; fatload usb 0:auto 41000000 uboot_image.bin;sf probe; sf erase 10000 A0000; sf write 41000000 10000 9f000 
+
+
+
+
+logcfg -c ButtonLog:D;
+logcat -s ButtonLog | grep "recorderTouchInfo"
+
+
+[15:14] logcfg -c NHuCom:D nmdiscservice:D
+logcat -s NHuCom nmdiscservice | grep -E "SYS->SOC|SOC->SYS|nmdiscservice"
+
+
+qml检查
+ 
+Logcat –s QmlFramework
+
+logcfg -c QmlFileLoad:*
+logcat -s QmlFileLoad:*
+
+logcfg -c nmdiscparser:D nmdiscservice:D NHuCom:D;
+logcat -s nmdiscparser nmdiscservice NHuCom
+
+
+
+
+provider_tool content://system/info -u -kv 1 vehicle/videorestrict -s on;provider_tool content://system/info -u -kv 1 vehicle/videorestrict -s off;provider_tool content://system/info -u -kv 1 vehicle/videorestrict -s on;provider_tool content://system/info -u -kv 1 vehicle/videorestrict -s off;provider_tool content://system/info -u -kv 1 vehicle/videorestrict -s on;provider_tool content://system/info -u -kv 1 vehicle/videorestrict -s off;provider_tool content://system/info -u -kv 1 vehicle/videorestrict -s on;provider_tool content://system/info -u -kv 1 vehicle/videorestrict -s off;provider_tool content://system/info -u -kv 1 vehicle/videorestrict -s on;provider_tool content://system/info -u -kv 1 vehicle/videorestrict -s off;provider_tool content://system/info -u -kv 1 vehicle/videorestrict -s on;provider_tool content://system/info -u -kv 1 vehicle/videorestrict -s off;provider_tool content://system/info -u -kv 1 vehicle/videorestrict -s on;provider_tool content://system/info -u -kv 1 vehicle/videorestrict -s off;provider_tool content://system/info -u -kv 1 vehicle/videorestrict -s on;provider_tool content://system/info -u -kv 1 vehicle/videorestrict -s off;provider_tool content://system/info -u -kv 1 vehicle/videorestrict -s on;provider_tool content://system/info -u -kv 1 vehicle/videorestrict -s off;provider_tool content://system/info -u -kv 1 vehicle/videorestrict -s on;provider_tool content://system/info -u -kv 1 vehicle/videorestrict -s off;provider_tool content://system/info -u -kv 1 vehicle/videorestrict -s on;provider_tool content://system/info -u -kv 1 vehicle/videorestrict -s off;provider_tool content://system/info -u -kv 1 vehicle/videorestrict -s on;provider_tool content://system/info -u -kv 1 vehicle/videorestrict -s off
+
+
+
+provider_tool content://system/info -u -kv 1 vehicle/videorestrict -s off
+provider_tool content://system/info -u -kv 1 vehicle/videorestrict -s on
+
+
+
+senduComCmd 01 20 01 20 5e 44 31 2a XX
+０１Ｈ：スレーブテストモード
+０２Ｈ：メカデバッグ表示
+０３Ｈ：ダイレクトタッチ表示
+０４Ｈ：簡易FEテストモード
+０５Ｈ：リージョン表示
+ 10:57 
+你想测试那种模式 就把XX替换成下面的01 02 03等 
+
+
+
+
+
+
+
+测 试方法：
+1,实机中进入到要测试的画面
+2,PC终端里UIFW的 ButtonLog的log输出准 备。 logcfg -c ButtonLog:D    logcat -s ButtonLog | grep "recorderTouchInfo"
+针对单个画面中重复specid无法区分的情况，UIFW加了个字段：repeatNo
+
+
+senduComCmd 01 20 00 00 25 44 31 83
+
+
+
+
+
+
+
+
+
+
+一.下载项目代码
+1.repo init -u ssh://git@nutshell.suntec.net/nutshell/develop/platform/manifest.git -b nutshell/qt5 -m AppFramework.xml
+2.repo sync
+3.repo start nutshell/qt5 --all
+
+下载SDK
+1.//iBigTom/Release/iAuto/Release/qt5_sdk/qt-opensource-linux-x64-5.3.1.run
+2.//iBigTom/Release/iAuto/Release/qt5_sdk/gdb
+3.//iBigTom/Release/iAuto/Release/qt5_sdk/DL_XXXXXX
+
+二.安装SDK
+$ chmod +x install.sh
+$ ./install.sh path（Qt5.3.1的path）
+
+三.系统编译
+source build/envsetup.sh
+lunch full-eng
+choosetype 1
+make -j4
+
+四.编译SDK
+make native_sdk
+make sim_sdk
+
+五.运行模拟器
+runemu
+
+六.安装APP
+adb push out/target/product/generic/system/apps/GLSettingX.cpk /tmp/
+进入adb shell： cpki -fi /tmp/XXXXX.cpk
+
+七.卸载APP
+cpki -fu net.suntec.app.xxxxx
+
+八.git
+git checkout <file> 放弃工作区文件更改
+git checkout . 放弃工作区所有文件更改
+git checkout master 更改分支为“master”
+git add <file> 提交工作区到暂存区
+git commit -m "log" 提交暂存区到本地版本库
+git commit -m 'add mock file
+    
+Redmine/Any: http://iredmine/issues/215803'   提交代码服务器
+
+git push origin master:refs/for/master 本地版本库到远程版本库
+git push origin 17Cy/MileStone/T0_PreCV:refs/for/17Cy/MileStone/T0_PreCV 
+
+回退
+到igerrit上选择abandon change
+git log查看log修改，找到自己提交之前最新的一版，copy版本号
+git reset <上文的版本号> 
+git reset HEAD~1  
+文件恢复上版
+
+
+单体测试：
+编译native_sdk工具
+. build/envsetup.sh
+lunch generic_dcue2T2-eng
+make native_sdk -j8
+cp -rf out/host/linux-x86/native_sdk ./
+运行UT脚本
+python autotest/testframework/main.py -r packages/QmlApps/Toyota/Setup --gcov
+通过LCOV来看
+python autotest/testframework/main.py -r packages/QmlApps/Toyota/Apps --lcov --gcov
+python autotest/testframework/main.py -r packages/QmlApps/Toyota/Home --lcov --gcov
+
+
+----------------------------check----------------------------
+cppcheck
+
+~/workspace/Software/17cy\ Check\ tools/Cppcheck_V1.68_s3/cppcheck -f --xml-version=2 ~/workspace/projects/17Cy/packages/QmlApps/Lexus/Apps --enable=all 2>cppcheck.xml –check-config 
+
+
+~/workspace/Software/17cy\ Check\ tools/Cppcheck_V1.68_s3/htmlreport/cppcheck-htmlreport --file=cppcheck.xml --report-dir=cppcheck_reports –source-dir=.
+
+
+cpplint
+
+python ~/workspace/Software/17cy\ Check\ tools/CodeStyleCheck2.3.4/CodeStyleCheck_Ver2.3.4_src/cpplint.py --threadnum=4 --output=xml . 2>./cpplint.xml 
+
+~/workspace/Software/17cy\ Check\ tools/CodeStyleCheck2.3.4/CodeStyleCheck_Ver2.3.4_src/htmlreport/cpplint-htmlreport --file=cpplint.xml --report-dir=cpplint_reports –source-dir=.
+
+
+------------------------------debug---------------------------
+项目目录下adb shell
+uid=0 gid=0@nutshell:/ # cd /var/system/grave/
+uid=0 gid=0@nutshell:/var/system/grave # ll
+如果有，先删掉
+uid=0 gid=0@nutshell:/var/system/grave # rm -rf *
+再查墓碑文件
+
+-----------------------------文档-------------------------------
+成果物地址:http://igerrit/gitweb?p=Doc/17Model/17Cy/21_UI.git;a=blob_plain;f=Apps/TestReport/DesignCheckReport/TOYOTA/Tsl/ZK125_Tsl_DCR_(MM_19_02_01).xls;hb=HEAD
+议事录地址:http://igerrit/gitweb?p=Doc/17Model/17Cy/21_UI.git;a=blob_plain;f=Apps/TestReport/DesignCheckReport/TOYOTA/Tsl/ZK125_Tsl_DCR_(MM_19_02_01)_minutes_001.xls;hb=HEAD
+-----------------------------上传log---------------------------
+modify apps
+
+modify Tsl last source app and trigger option
+
+Redmine/Any: http://iredmine/issues/148843
+
+modify appscommon
+
+Modify hardkey beep
+
+Redmine/Any: http://iredmine/issues/148843
+
+modify Apps SCR files, Dataservice basicdesign
+
+add tsl, dataservice, HDsetup spectest
+
+---------------------------------------------------------------
+repo start --all master 添加其他branch
+
+
+--------------------链接miracast-----------
+点击autio-> source
+tst_mediamanager miracast
+
+
+
+--------------更改士向地----------------
+vi system/etc/environment.ini 
+
+
+America=10
+European=20
+China=40
+Oceania=50
+SouthKorea=60
+Taiwan=70
+Middle-East=81
+South-America=90
+Brazil=92
+South-Africa=a0
+Southeast-Asia=b0
+HongkongMacau=d0
+India=e0
+
+setprop persist.iauto.model.region 40
+
+
+setprop persist.iauto.model.region 50
+
+setprop persist.iauto.model.region b0
+
+
+
+setprop persist.debug.adbswitch on
+
+
+enum NGRestrictionStatus
+{
+    NGRestrictionStatus_Off         = 0,
+    NGRestrictionStatus_OperationOn = 0x0001,
+    NGRestrictionStatus_ScreenOn    = 0x0002
+};
+
+
+
+
+
+

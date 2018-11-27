@@ -1,0 +1,205 @@
+HTML <li> 标签
+定义和用法
+<li> 标签定义列表项目。
+<li> 标签可用在有序列表 (<ol>) 和无序列表 (<ul>) 中。
+HTML 与 XHTML 之间的差异
+在 HTML 4.01 中，li 元素的 "type" 和 "value" 属性是不被赞成使用的。
+在 XHTML 1.0 Strict DTD 中，li 元素的 "type" 和 "value" 属性是不被支持的。
+
+<html>
+<body>
+<h4>一个无序列表：</h4>
+<ul>
+  <li>咖啡</li>
+  <li>茶</li>
+  <li>牛奶</li>
+</ul>
+
+</body>
+</html>
+
+一个无序列表：
+
+. 咖啡
+. 茶
+. 牛奶
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<ol>
+  <li>咖啡</li>
+  <li>牛奶</li>
+  <li>茶</li>
+</ol>
+
+<ol start="50">
+  <li>咖啡</li>
+  <li>牛奶</li>
+  <li>茶</li>
+</ol>
+ 
+</body>
+</html>
+
+显示效果：
+1.咖啡
+2.牛奶
+3.茶
+50.咖啡
+51.牛奶
+52.茶
+
+
+
+<html>
+<body>
+
+<h4>数字列表：</h4>
+<ol>
+ <li>苹果</li>
+ <li>香蕉</li>
+ <li>柠檬</li>
+ <li>桔子</li>
+</ol>  
+
+<h4>字母列表：</h4>
+<ol type="A">
+ <li>苹果</li>
+ <li>香蕉</li>
+ <li>柠檬</li>
+ <li>桔子</li>
+</ol>  
+
+<h4>小写字母列表：</h4>
+<ol type="a">
+ <li>苹果</li>
+ <li>香蕉</li>
+ <li>柠檬</li>
+ <li>桔子</li>
+</ol>  
+
+<h4>罗马字母列表：</h4>
+<ol type="I">
+ <li>苹果</li>
+ <li>香蕉</li>
+ <li>柠檬</li>
+ <li>桔子</li>
+</ol>  
+
+<h4>小写罗马字母列表：</h4>
+<ol type="i">
+ <li>苹果</li>
+ <li>香蕉</li>
+ <li>柠檬</li>
+ <li>桔子</li>
+</ol>  
+
+</body>
+</html>
+
+
+数字列表：
+
+苹果
+香蕉
+柠檬
+桔子
+字母列表：
+
+苹果
+香蕉
+柠檬
+桔子
+小写字母列表：
+
+苹果
+香蕉
+柠檬
+桔子
+罗马字母列表：
+
+苹果
+香蕉
+柠檬
+桔子
+小写罗马字母列表：
+
+苹果
+香蕉
+柠檬
+桔子
+
+HTML DOM Li 对象
+Li 对象
+Li 对象表示 HTML <li> 元素。
+访问 Li 对象
+您可以通过使用 getElementById() 来访问 <li> 元素：
+var x = document.getElementById("myLi");
+亲自试一试
+创建 Li 对象
+您可以通过使用 document.createElement() 方法来创建 <li> 元素：
+var x = document.createElement("LI");
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>演示如何创建 LI 元素</h3>
+
+<ol id="myList">
+  <li>咖啡</li>
+  <li>红茶</li>
+  <li>牛奶</li>
+  <li>橙汁</li>
+</ol>
+
+<p>点击按钮来创建 LI 元素。</p>
+
+<p id="demo"></p>
+
+<button onclick="myFunction()">试一下</button>
+
+<script>
+function myFunction()
+{
+var x = document.createElement("LI");
+var t = document.createTextNode("豆浆");
+x.appendChild(t);
+document.getElementById("myList").appendChild(x);
+}
+</script>
+
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html>
+<body>
+<h3>演示如何访问 LI 元素</h3>
+<ol>
+  <li id="myLi">咖啡</li>
+  <li>红茶</li>
+  <li>牛奶</li>
+  <li>橙汁</li>
+</ol>
+
+<p>点击按钮来设置列表项从数字 300 开始递增。</p>
+
+<button onclick="myFunction()">试一下</button>
+
+<script>
+function myFunction()
+{
+var x = document.getElementById("myLi");
+x.value = "300";
+}
+</script>
+
+</body>
+</html>
+
+

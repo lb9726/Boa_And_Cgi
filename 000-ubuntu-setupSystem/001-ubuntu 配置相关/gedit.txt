@@ -1,0 +1,9 @@
+点滴记录——Ubuntu 14.04中gedit打开文件出现中文乱码问题
+原创 2014年06月19日 14:14:39 标签：linux /乱码 14027
+
+    在中文支持配置还不完整的Ubuntu 14.04中，使用gedit打开带有中文字符的文件有时会出现乱码的情况，这是由于gedit对字符编码匹配不正确导致的，解决方法如下：
+    在终端中输入如下命令，然后重新打开gedit即可：
+
+    gsettings set org.gnome.gedit.preferences.encodings auto-detected "['GB18030', 'GB2312', 'GBK', 'UTF-8', 'BIG5', 'CURRENT', 'UTF-16']"
+
+    gsettings set org.gnome.gedit.preferences.encodings shown-in-menu "['GB18030', 'GB2312', 'GBK', 'UTF-8', 'BIG5', 'CURRENT', 'UTF-16']"

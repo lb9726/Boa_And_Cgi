@@ -1,0 +1,14 @@
+.btn {
+    margin:50px 50px 50px 50px;
+    display: inline-block;
+    background: #D0EEFF;
+    border: 1px solid #99D3F5;
+    border-radius: 4px;
+    padding: 4px 12px;
+    overflow: hidden;
+    color: #1E88C7;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+    /*outline: none; 按钮点击之后的那层外边框，不显示 轮廓*/
+}

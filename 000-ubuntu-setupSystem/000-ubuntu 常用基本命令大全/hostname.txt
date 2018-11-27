@@ -1,0 +1,16 @@
+修改主机名 libo@libo: 后面那个libo vi/etc/hostname 改为libo
+然后将vi /etc/hosts 将127.0.1.1 libo 重启电脑
+重启之后终端的libo@libo 的@之后的就显示为libo了
+
+修改主机名
+sudo hostname 123 查看一下主机名为什么？
+hostname 一下，显示为123
+不过这个只是临时的，重启之后还是原来的主机名
+
+
+当你经常需要ping 一个iP的时候，可以把IP改得简单一点
+在 vim /etc/hosts
+例如把百度的改为baidu
+115.239.211.122 baidu
+
+ping的时候就可以 ping baidu

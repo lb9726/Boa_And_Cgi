@@ -1,0 +1,18 @@
+1. 打开登录界面时，需要从服务器端获取正确的用户名和密码，比较正确后登录成功，登录成功之后建立socket的连接，等待发送数据时进行处理
+2. 需要添加一个文件或者标志位来设定值，使用cgi端读写文件，向文件返回这个数值即可
+
+
+login.cgi 在此界面onload之时，建立socket与TFT的连接，获取username，password。顺带获取下一个页面的初始化的参数信息，在登录成功之后通过url发送到下一个页面去设置初始化参数
+结束时关闭socket连接
+
+frame.cgi   
+top.cgi     维持心跳连接
+
+volume.cgi      每一次数值变化，建立socket连接，发送数据，由于页面点击每次都会刷新界面，需要设置cookie，并且从cookie中获取数值
+AutoTest.cgi    同上
+backlight.cgi   同上
+Layout.cgi      同上
+
+所有的短socket连接都在cgi程序中去连接，一次调用结束后，关闭socket套接字连接
+
+json的添加帧头帧尾的处理都在cgi端去做，不再html中去处理

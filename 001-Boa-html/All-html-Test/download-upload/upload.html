@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link rel="stylesheet" href="bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap/bootstrap-theme.css">
+    <script src="bootstrap/jquery-1.10.2.js"></script>
+    <script src="bootstrap/bootstrap.js"></script>
+    <style>
+        .fileinput-button {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .fileinput-button input{
+            position:absolute;
+            right: 0px;
+            top: 0px;
+            opacity: 0;
+            -ms-filter: 'alpha(opacity=0)';
+            font-size: 200px;
+        }
+    </style>
+</head>
+<body style="padding: 10px">
+    <div align="center">
+        <span class="btn btn-success fileinput-button">
+            <span>上传</span>
+            <input type="file">
+        </span>
+    </div>
+</body>
+</html>

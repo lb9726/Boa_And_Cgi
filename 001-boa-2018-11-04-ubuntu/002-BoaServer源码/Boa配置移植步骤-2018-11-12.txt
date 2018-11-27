@@ -1,0 +1,83 @@
+准备工作，下载Boa源码，下载Cgi源码。
+http://www.boa.org/ 点击下载 Latest Released Version (0.94.13) here (signature here)
+下载 boa-0.94.13.tar.gz 解压到本地
+从CGIC的主站点http://www.boutell.com/cgic/下载源码，将其解压到本地
+
+1. 对Boa源码进行交叉编译
+https://blog.csdn.net/manchestermi/article/details/50826129
+编译时会有一些错误，按照上面的链接，进行源码对应的修改
+
+进入src文件夹，./configure
+修改Makefile文件，替换如下(具体路径是自身环境而改变)
+CC = /opt/gcc_4.9/bin/arm-linux-gnueabihf-gcc-4.9.2
+CPP = /opt/gcc_4.9/bin/arm-linux-gnueabihf-gcc-4.9.2 -E
+
+make一下，如果有错误继续修改错误，直到编译完成，生成对应的可执行程序
+
+
+参考https://blog.csdn.net/orz415678659/article/details/9397797进行配置文件的配置
+修改boa.conf配置文件
+在boa-0.94.13目录下已有一个示例boa.conf，可以在其基础上进行修改。如下：
+
+User nobody -> User root
+ Group nogroup -> Group 0
+ MimeTypes /etc/mime.types -> MimeTypes /etc/boa/mime.types
+ ErrorLog /var/log/boa/error_log -> ErrorLog /etc/boa/error_log
+ AccessLog /var/log/boa/access_log -> AccessLog /etc/boa/access_log
+ DocumentRoot /var/www -> DocumentRoot /etc/boa/html
+ #ServerName www.your.org.here -> ServerNamewww.your.org.here 
+  错误:gethostbyname:: Resource temporarily unavailable
+ ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/ ->ScriptAlias /cgi-bin/ /etc/boa/cgi-bin/
+ 
+ 
+ 目标文件系统中创建/etc/boa/html目录 修改属性777
+ 目标文件系统/etc/boa目录下创建access_log error_log文件 属性777
+ 目标文件系统/etc/boa目录下创建cgi-bin目录
+ 复制ubuntu /etc/mime.type文件到目标板/etc/boa下=======错误:Could not open mime.types file, "/etc/mime.types", for reading
+ 
+ 拷贝index.html主页到/etc/boa/html目录下 chmod a-x *.html修改属性
+ 错误:403 Forbidden The requested URL '/' resolves to a file which is marked executable but is not a CGI file; retrieving it is forbidden.
+ 
+ Port 80 -> Port 8080 那么测试地址xxx.xxx.xxx.xxx:8080
+ 错误:unable to bind: Address already in use(这个错误要查看error_log文件才能发现)可以不做更改，除非端口被占用了
+ 
+ 
+ 
+ 解压cgic207.tar.gz 编译cgic的源码
+ 可以修改Makefile中的gcc为/opt/gcc_4.9/bin/arm-linux-gnueabihf-gcc-4.9.2
+ make之后生成一个静态库libcgic.a
+ 
+ 由于使用静态库文件会使得可执行程序变大，所以个人使用了生成动态库的方式
+ 新建一个目录Cgi：把下载的源码里面的 cgic.c cgic.h 文件复制进去
+ 在当前位置打开终端，使用命令编译生成动态库文件libcgic.so
+ /opt/gcc_4.9/bin/arm-linux-gnueabihf-gcc-4.9.2 -shared -fPIC cgic.c -o libcgic.so
+ 会生成一个libcgic.so的库文件
+ 
+ 新建另一个目录Cgi_test-File
+ 拷贝Cgi里面的 cgic.h  libcgic.so 拷贝到这个目录里面
+ 执行命令 sodimas_gcc cgictest.c -o cgicTest.cgi -L. libcgic.so
+ 生成cgicTest.cgi 文件
+ 
+ 要想执行这个cgicTest.cgi文件，则需要把生成的libcgic.so拷贝到/usr/lib/下面
+ 
+ 
+ [root@IoT-A6G2C boa]# ls
+access_log  boa*        boa.conf*   cgi-bin/    error_log   html/       mime.types*
+ 
+ 把cgicTest.cgi 文件放到/etc/boa/cgi-bin/下面
+ 把boa复制到/usr/bin/下面
+ html文件复制到html下面
+ 
+ 运行时,在/usr/bin/ 下面./boa & 运行
+ 
+ 
+ 
+ https://blog.csdn.net/emtribe/article/details/8702416
+
+mkstemp: No such file or directory 
+12.运行网页时老出现错误：“mkstemp:No such file or diectory”
+解决：不能用post，只能用get。因为post方式需要新建一个临时文件，这就需要用到mkstemp函数。这个函数是在系统中以唯一的文件名创建一个文件并打开，且只有当前用户才能访问这个临时文件。故权限不够，或其他什么问题都会报这个错误。那么就用get吧！这里具体原因细节笔者暂时也不是很清楚...
+
+因为修改了config.c 下面的tempdir的路径，导致了无妨生成临时文件，boa是支持post的方式的，故此修改为之前的路径即可/tmp
+    
+ 

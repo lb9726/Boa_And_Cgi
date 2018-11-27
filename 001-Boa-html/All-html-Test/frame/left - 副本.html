@@ -1,0 +1,152 @@
+<html>
+<head>
+<style>
+div#course {
+	background:transparent url(/ui2017/bg.png) 0 -700px no-repeat;
+	padding:66px 0 10px 0;
+	}
+
+div#navsecond h2, div#sidebar h2	{
+	font-size: 14px;
+	margin:0;
+	padding:10px 0 5px 10px;
+	color:#000;
+	display:block;
+	border-bottom:0px solid #ddd;
+	font-family:'微软雅黑';
+	}
+
+div#navsecond h2#link_about, div#navsecond h2#link_help	{
+	font-size: 14px;
+	margin:0;
+	margin-left:10px;
+	padding:0;
+	color:#000;
+	display:block;
+	}
+
+div#navsecond h2#link_about	{
+	margin-top:20px;
+	margin-bottom:15px;
+	}
+
+div#navsecond h2#link_help	{
+	margin-bottom:20px;
+	}
+
+div#navsecond h2#link_about a, div#navsecond h2#link_help a	{
+	display:inline;
+	padding:0;
+	font-size:14px;
+	border-bottom:0px solid #ddd;
+	text-decoration:none;
+	color:#0479A7;
+	}
+
+div#navsecond h2#link_about a:hover, div#navsecond h2#link_help a:hover	{
+	border-bottom:1px solid #0479A7;
+	color:#0479A7;
+	background-color:transparent;
+	}
+
+div#navsecond ul, div#navsecond li, div#sidebar ul, div#sidebar li	{
+	margin: 0;
+	padding: 0;
+	font-family:'微软雅黑';
+	}
+
+
+div#navsecond li, div#sidebar li	{
+	list-style: none;
+	}
+
+div#navsecond a, div#sidebar a {
+	display:block;
+	padding:5px 0 5px 15px;
+	font-size:19px;
+	border-bottom:0px solid #ddd;
+	text-decoration:none;
+	}
+
+div#navsecond ul a.active {
+	background : #f5f5f5;
+	color:#990000;
+	} 
+	
+	
+div#navsecond a:link, div#navsecond a:visited	{
+	text-decoration : none;
+	color:#000000;
+	background : transparent;
+	} 
+
+div#navsecond a:hover	{
+	text-decoration : none;
+	color : #fff;
+	background : #aaa;
+	}
+
+div#sidebar a:hover	{
+	text-decoration : none;
+	color : #fff;
+	background : #BD2D30;
+	}
+
+div#navsecond a:active	{
+	text-decoration : none;
+	color : #fff;
+	background : #BD2D30;
+	}
+
+div#navsecond li.currentLink a:link, div#navsecond li.currentLink a:visited	{
+	text-decoration : none;
+	color:#ffffff;
+	background-color: #BD2D30;
+	}	
+</style>
+
+</head>
+<title></title>
+<body bgcolor="lightblue" >
+<div id="navsecond">
+<ul>
+<li><a href="./volumeSetting.html" target="showFrame" id="id_volume" onclick="currentIndexChange(1)">Volume</a><br/></li>
+<li><a href="./backlight.html" target="showFrame" id="id_backlight" onclick="currentIndexChange(2)">BackLight</a><br/></li>
+<li><a href="./AutoTest.html" target="showFrame" id="id_AutoTest" onclick="currentIndexChange(3)">AutoTest</a><br/></li>
+<li><a href="./Layout.html" target="showFrame" id="id_Layout" onclick="currentIndexChange(4)">Layout</a><br/></li>
+<li><a href="./Style.html" target="showFrame" id="id_Style" onclick="currentIndexChange(5)">Style</a><br/></li>
+<li><a href="./Application.html" target="showFrame" id="id_Application" onclick="currentIndexChange(6)">Application</a><br/></li>
+</ul>
+</div>
+</div>
+<script type="text/javascript">
+	function currentIndexChange(index)
+	{
+		console.log("index=", index);
+		if (1 === index)
+		{
+			
+		}
+		else if (2 === index)
+		{
+		}
+		else if (3 === index)
+		{
+		}
+		else if (4 === index)
+		{
+		}
+		else if (5 === index)
+		{
+		}
+		else if (6 === index)
+		{
+		}
+		else
+		{
+		    // do nothing just reserved
+		}
+	}
+</script>
+</body>
+</html>

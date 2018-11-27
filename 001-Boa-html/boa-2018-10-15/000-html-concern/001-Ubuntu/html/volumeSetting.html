@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Volume</title>
+        <script type="text/javascript" src="lib/jquery.js"></script>
+        <script type="text/javascript" src="lib/RangeSlider.js"></script>
+		<script type="text/javascript" src="lib/global.js"></script>
+        <link rel="stylesheet" href="css/backlight.css" type="text/css">
+		<style>
+		.hlong*{
+		display:inline-block;
+		vertical-align:middle
+		}/*
+		body {
+			background:url(./images/rightBackground.png)  no-repeat center center;
+			background-size:cover;
+			background-attachment:fixed;			
+		}*/
+		</style>
+    </head>
+    <script type="text/javascript">
+    function load()
+    {
+        console.log("is loading");		
+		setAllParameter();		
+    }
+    function unload()
+    {
+        console.log("is unloading");
+    }
+    </script>
+	
+    <body onload="load()" onunload="unload()">
+        <div id="standy" class="hlong">		    
+            <img id="imgStandy" src="images/Message.png" align="absmiddle"/ > 
+			</br>
+		    </br>
+            <input type="range" id="msgSlider" value="0" min="0" max="100" onchange="messageChanged()">&thinsp;   &thinsp;
+			<span id="msgSliderCount" style="font-size: 50px;font-family: 宋体;">0</span>
+			<span style="font-size: 50px;font-family: 宋体;">%</span>
+			</br>
+			</br>
+			</br>
+			
+			<img src="images/Gong.png" align="absmiddle"/ >
+			</br>
+			</br>
+
+			<input type="range" id="gongSlider"  value="0"  min="0" max="100" onchange="gongChanged()">&thinsp;   &thinsp;
+			<span id="gongSliderCount" style="font-size: 50px;font-family: 宋体;">0</span>
+			<span style="font-size: 50px;font-family: 宋体;">%</span>
+			</br>
+			</br>
+			</br>
+			
+			<img src="images/Music.png" align="absmiddle"/ >  
+			</br>
+		    </br>
+			<input type="range" id="musicSlider" value="0"  min="0" max="3600" onchange="musicChanged()">&thinsp;   &thinsp;
+			<label id="musicSliderCount" style="font-size: 50px;font-family: 宋体;">0</label>
+			<span style="font-size: 50px;font-family: 宋体;">%</span>
+        </div>
+ 
+        <script type="text/javascript">
+            var change = function($msgSlider) 
+            {
+                /*内容可自行定义*/
+                console.log("234");
+            }
+			var change1 = function($msgSlider)
+			{
+                /*内容可自行定义*/
+                console.log("234");
+            }
+            $('#gongSlider').RangeSlider({ min: 0,   max: 100,  step: 1,  callback: change});
+            $('#msgSlider').RangeSlider({ min: 0,   max: 100,  step: 1,  callback: change});
+            $('#musicSlider').RangeSlider1({ min: 0,   max: 100,  step: 1,  callback: change1});
+			
+	function messageChanged() 
+	{	
+		var value = $('#msgSlider').val();
+		setMessageNum(value);
+		loadJsonDoc('../cgi-bin/otherHtml.cgi', 0, value);			
+		$('#msgSliderCount').html(parseInt(value));		
+		console.log("messageChanged");
+	}
+	
+	function gongChanged()
+	{
+		var value = $('#gongSlider').val();
+		setGongNum(value);
+		loadJsonDoc('../cgi-bin/otherHtml.cgi', 1, value);	
+		$('#gongSliderCount').html(parseInt(value));
+		console.log("gongChanged");
+	}
+	
+	function musicChanged() 
+	{
+		var value = $('#musicSlider').val();
+		setMusicNum(value);
+		loadJsonDoc('../cgi-bin/otherHtml.cgi', 2, value);	
+		document.getElementById('musicSliderCount').innerHTML = value;		
+		console.log("musicChanged");
+	}
+	
+	function setAllParameter()
+	{
+		var tmpLanguageOption = getLanguageValue();
+		console.log("tmpLanguageOption = ", tmpLanguageOption);
+		if (1 == tmpLanguageOption)
+		{
+		    
+		}
+		var tmpMsgNum = getMessageNum();
+		if (tmpMsgNum != null)
+		{
+		    $('#msgSliderCount').html(parseInt(tmpMsgNum));
+		    var id = document.getElementById('msgSlider');
+		    id.value = tmpMsgNum;
+		    $('#msgSlider').css( 'background', 'linear-gradient(to right, #059CFA, white ' + tmpMsgNum + '%, white)' );
+		    console.log("tmpMsgNum = ", tmpMsgNum);		    
+		}
+		
+		var tmpGongNum = getGongNum();
+		console.log("tmpGongNum", tmpGongNum);
+		if (tmpGongNum != null)
+		{
+		    $('#gongSliderCount').html(parseInt(tmpGongNum));
+		    var id = document.getElementById('gongSlider');
+		    id.value = tmpGongNum;
+		    $('#gongSlider').css( 'background', 'linear-gradient(to right, #059CFA, white ' + tmpGongNum + '%, white)' );
+		    console.log("tmpGongNum", tmpGongNum);
+		}
+		
+		var tmpMusicNum = getMusicNum();
+		console.log("tmpMusicNum", tmpMusicNum);
+		if (tmpMusicNum != null)
+		{
+		    document.getElementById('musicSliderCount').innerHTML = tmpMusicNum;
+		    var id = document.getElementById('musicSlider');
+		    id.value = tmpMusicNum;
+		    $('#musicSlider').css( 'background', 'linear-gradient(to right, #059CFA, white ' + tmpMusicNum + '%, white)' );
+		    console.log("tmpMusicNum", tmpMusicNum);
+		}		
+	}
+	
+	function loadJsonDoc(url, index, num)
+    {
+        var xmlhttp;
+        if (window.XMLHttpRequest)
+        {// code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        }
+        else
+        {// code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function()
+        {
+            console.log("is onreadystatechange");
+            if (4 == xmlhttp.readyState && 200 == xmlhttp.status)
+            {
+                console.log("is can get information");
+                var str = xmlhttp.responseText;
+                console.log("str = ", str);
+            }
+        }
+        var text;
+        if (0 == index)    // Message
+        {
+            text = '{"type":"setparameter","info":{"liftflrvol":';
+            text = text + num + '}}';
+        }
+        else if (1 == index) // Gong
+        {
+            text = '{"type":"setparameter","info":{"liftarvvol":';
+            text = text + num + '}}';
+        }
+        else if (2 == index) // Music
+        {
+            text = '{"type":"setparameter","info":{"admusicvol":';
+            text = text + num + '}}';
+        }
+        console.log("text = ", text);
+        xmlhttp.open("POST", url, true);
+        xmlhttp.send(text);
+    }	
+</script>
+</body>
+</html>

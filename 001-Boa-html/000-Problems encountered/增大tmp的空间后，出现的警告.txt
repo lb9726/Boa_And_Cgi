@@ -1,0 +1,279 @@
+
+[root@IoT-A6G2C ~]# df -h
+Filesystem                Size      Used Available Use% Mounted on
+ubi0:rootfs             257.3M     88.9M    163.6M  35% /
+devtmpfs                 42.0M         0     42.0M   0% /dev
+tmpfs                    58.2M         0     58.2M   0% /dev/shm
+tmpfs                   100.0M     32.0K    100.0M   0% /tmp
+tmpfs                    58.2M    156.0K     58.1M   0% /run
+/dev/mtdblock6          149.8M     63.6M     86.3M  42% /usr/bst
+[root@IoT-A6G2C ~]# hrtimer: interrupt took 2332542 ns
+boa invoked oom-killer: gfp_mask=0x200da, order=0, oom_score_adj=0
+CPU: 0 PID: 195 Comm: boa Not tainted 4.1.15-g8833481-dirty #73
+Hardware name: Freescale i.MX6 Ultralite (Device Tree)
+[<80015b2c>] (unwind_backtrace) from [<80012720>] (show_stack+0x10/0x14)
+[<80012720>] (show_stack) from [<806fc89c>] (dump_stack+0x84/0xc4)
+[<806fc89c>] (dump_stack) from [<806fa9dc>] (dump_header+0x88/0x1b0)
+[<806fa9dc>] (dump_header) from [<800a4f9c>] (oom_kill_process+0x20c/0x3f4)
+[<800a4f9c>] (oom_kill_process) from [<800a5444>] (__out_of_memory+0x250/0x374)
+[<800a5444>] (__out_of_memory) from [<800a56ec>] (out_of_memory+0x58/0x70)
+[<800a56ec>] (out_of_memory) from [<800a9830>] (__alloc_pages_nodemask+0x5b0/0x884)
+[<800a9830>] (__alloc_pages_nodemask) from [<800b5938>] (shmem_getpage_gfp+0x4a0/0x7fc)
+[<800b5938>] (shmem_getpage_gfp) from [<800a1eb4>] (generic_perform_write+0xc8/0x1c8)
+[<800a1eb4>] (generic_perform_write) from [<800a38d8>] (__generic_file_write_iter+0x16c/0x1bc)
+[<800a38d8>] (__generic_file_write_iter) from [<800a3a5c>] (generic_file_write_iter+0x134/0x260)
+[<800a3a5c>] (generic_file_write_iter) from [<800de678>] (__vfs_write+0xa8/0xd8)
+[<800de678>] (__vfs_write) from [<800dedd4>] (vfs_write+0x90/0x164)
+[<800dedd4>] (vfs_write) from [<800df600>] (SyS_write+0x44/0x9c)
+[<800df600>] (SyS_write) from [<8000f480>] (ret_fast_syscall+0x0/0x3c)
+Mem-Info:
+active_anon:14706 inactive_anon:3803 isolated_anon:0
+ active_file:23 inactive_file:34 isolated_file:0
+ unevictable:33 dirty:1 writeback:0 unstable:0
+ slab_reclaimable:406 slab_unreclaimable:1381
+ mapped:56 shmem:16522 pagetables:110 bounce:0
+ free:6295 free_pcp:10 free_cma:5944
+Normal free:25180kB min:1376kB low:1720kB high:2064kB active_anon:58824kB inactive_anon:15212kB active_file:92kB inactive_file:136kB unevictable:132kB isolated(anon):0kB isolated(file):0kB present:131072kB managed:119280kB mlocked:132kB dirty:4kB writeback:0kB mapped:224kB shmem:66088kB slab_reclaimable:1624kB slab_unreclaimable:5524kB kernel_stack:488kB pagetables:440kB unstable:0kB bounce:0kB free_pcp:40kB local_pcp:40kB free_cma:23776kB writeback_tmp:0kB pages_scanned:1428 all_unreclaimable? yes
+lowmem_reserve[]: 0 0 0
+Normal: 7*4kB (U) 12*8kB (U) 2*16kB (U) 4*32kB (UC) 1*64kB (C) 2*128kB (UC) 0*256kB 0*512kB 2*1024kB (UC) 1*2048kB (C) 1*4096kB (C) 0*8192kB 1*16384kB (C) 0*32768kB = 25180kB
+16576 total pagecache pages
+0 pages in swap cache
+Swap cache stats: add 0, delete 0, find 0/0
+Free swap  = 0kB
+Total swap = 0kB
+32768 pages RAM
+0 pages HighMem/MovableOnly
+4294962052 pages reserved
+8192 pages cma reserved
+[ pid ]   uid  tgid total_vm      rss nr_ptes nr_pmds swapents oom_score_adj name
+[   82]     0    82      500       10       5       0        0             0 syslogd
+[   84]     0    84      500       10       4       0        0             0 klogd
+[   87]     0    87      640       75       5       0        0         -1000 udevd
+[  111]     1   111      343       16       4       0        0             0 portmap
+[  124]  1000   124      558       34       4       0        0             0 dbus-daemon
+[  139]     0   139      500       15       5       0        0             0 udhcpd
+[  158]     0   158     1342       73       6       0        0             0 hostapd
+[  164]     0   164      470       21       5       0        0             0 dropbear
+[  175]     0   175      500       10       4       0        0             0 telnetd
+[  179]     0   179      895       47       5       0        0             0 vsftpd
+[  191]     0   191    22620      997      26       0        0             0 TFT
+[  194]     0   194      526       24       5       0        0             0 sh
+[  195]     0   195      382       42       4       0        0             0 boa
+[  199]     0   199     4078      312      12       0        0             0 mplayer
+[  200]     0   200     4078      333      11       0        0             0 mplayer
+Out of memory: Kill process 191 (TFT) score 33 or sacrifice child
+Killed process 200 (mplayer) total-vm:16312kB, anon-rss:1260kB, file-rss:72kB
+mplayer invoked oom-killer: gfp_mask=0x201da, order=0, oom_score_adj=0
+CPU: 0 PID: 199 Comm: mplayer Not tainted 4.1.15-g8833481-dirty #73
+Hardware name: Freescale i.MX6 Ultralite (Device Tree)
+[<80015b2c>] (unwind_backtrace) from [<80012720>] (show_stack+0x10/0x14)
+[<80012720>] (show_stack) from [<806fc89c>] (dump_stack+0x84/0xc4)
+[<806fc89c>] (dump_stack) from [<806fa9dc>] (dump_header+0x88/0x1b0)
+[<806fa9dc>] (dump_header) from [<800a4f9c>] (oom_kill_process+0x20c/0x3f4)
+[<800a4f9c>] (oom_kill_process) from [<800a5444>] (__out_of_memory+0x250/0x374)
+[<800a5444>] (__out_of_memory) from [<800a56ec>] (out_of_memory+0x58/0x70)
+[<800a56ec>] (out_of_memory) from [<800a9830>] (__alloc_pages_nodemask+0x5b0/0x884)
+[<800a9830>] (__alloc_pages_nodemask) from [<800a3480>] (generic_file_read_iter+0x4dc/0x5f0)
+[<800a3480>] (generic_file_read_iter) from [<800de5a8>] (__vfs_read+0xa8/0xd0)
+[<800de5a8>] (__vfs_read) from [<800decbc>] (vfs_read+0x7c/0x104)
+[<800decbc>] (vfs_read) from [<800df564>] (SyS_read+0x44/0x9c)
+[<800df564>] (SyS_read) from [<8000f480>] (ret_fast_syscall+0x0/0x3c)
+Mem-Info:
+active_anon:14615 inactive_anon:3906 isolated_anon:0
+ active_file:18 inactive_file:54 isolated_file:0
+ unevictable:33 dirty:0 writeback:0 unstable:0
+ slab_reclaimable:405 slab_unreclaimable:1384
+ mapped:48 shmem:16851 pagetables:99 bounce:0
+ free:6289 free_pcp:1 free_cma:5944
+Normal free:25144kB min:1376kB low:1720kB high:2064kB active_anon:58460kB inactive_anon:15624kB active_file:72kB inactive_file:220kB unevictable:132kB isolated(anon):0kB isolated(file):0kB present:131072kB managed:119280kB mlocked:132kB dirty:0kB writeback:0kB mapped:192kB shmem:67404kB slab_reclaimable:1620kB slab_unreclaimable:5536kB kernel_stack:488kB pagetables:396kB unstable:0kB bounce:0kB free_pcp:8kB local_pcp:8kB free_cma:23776kB writeback_tmp:0kB pages_scanned:2544 all_unreclaimable? yes
+lowmem_reserve[]: 0 0 0
+Normal: 26*4kB (U) 6*8kB (U) 4*16kB (U) 1*32kB (C) 1*64kB (C) 2*128kB (UC) 0*256kB 0*512kB 2*1024kB (UC) 1*2048kB (C) 1*4096kB (C) 0*8192kB 1*16384kB (C) 0*32768kB = 25144kB
+16925 total pagecache pages
+0 pages in swap cache
+Swap cache stats: add 0, delete 0, find 0/0
+Free swap  = 0kB
+Total swap = 0kB
+32768 pages RAM
+0 pages HighMem/MovableOnly
+4294962052 pages reserved
+8192 pages cma reserved
+[ pid ]   uid  tgid total_vm      rss nr_ptes nr_pmds swapents oom_score_adj name
+[   82]     0    82      500       10       5       0        0             0 syslogd
+[   84]     0    84      500       17       4       0        0             0 klogd
+[   87]     0    87      640       75       5       0        0         -1000 udevd
+[  111]     1   111      343       16       4       0        0             0 portmap
+[  124]  1000   124      558       34       4       0        0             0 dbus-daemon
+[  139]     0   139      500       15       5       0        0             0 udhcpd
+[  158]     0   158     1342       73       6       0        0             0 hostapd
+[  164]     0   164      470       21       5       0        0             0 dropbear
+[  175]     0   175      500       10       4       0        0             0 telnetd
+[  179]     0   179      895       47       5       0        0             0 vsftpd
+[  191]     0   191    22620      998      26       0        0             0 TFT
+[  194]     0   194      526       24       5       0        0             0 sh
+[  195]     0   195      382       42       4       0        0             0 boa
+[  199]     0   199     4078      294      12       0        0             0 mplayer
+Out of memory: Kill process 191 (TFT) score 33 or sacrifice child
+Killed process 199 (mplayer) total-vm:16312kB, anon-rss:1160kB, file-rss:16kB
+boa invoked oom-killer: gfp_mask=0x200da, order=0, oom_score_adj=0
+CPU: 0 PID: 195 Comm: boa Not tainted 4.1.15-g8833481-dirty #73
+Hardware name: Freescale i.MX6 Ultralite (Device Tree)
+[<80015b2c>] (unwind_backtrace) from [<80012720>] (show_stack+0x10/0x14)
+[<80012720>] (show_stack) from [<806fc89c>] (dump_stack+0x84/0xc4)
+[<806fc89c>] (dump_stack) from [<806fa9dc>] (dump_header+0x88/0x1b0)
+[<806fa9dc>] (dump_header) from [<800a4f9c>] (oom_kill_process+0x20c/0x3f4)
+[<800a4f9c>] (oom_kill_process) from [<800a5444>] (__out_of_memory+0x250/0x374)
+[<800a5444>] (__out_of_memory) from [<800a56ec>] (out_of_memory+0x58/0x70)
+[<800a56ec>] (out_of_memory) from [<800a9830>] (__alloc_pages_nodemask+0x5b0/0x884)
+[<800a9830>] (__alloc_pages_nodemask) from [<800b5938>] (shmem_getpage_gfp+0x4a0/0x7fc)
+[<800b5938>] (shmem_getpage_gfp) from [<800a1eb4>] (generic_perform_write+0xc8/0x1c8)
+[<800a1eb4>] (generic_perform_write) from [<800a38d8>] (__generic_file_write_iter+0x16c/0x1bc)
+[<800a38d8>] (__generic_file_write_iter) from [<800a3a5c>] (generic_file_write_iter+0x134/0x260)
+[<800a3a5c>] (generic_file_write_iter) from [<800de678>] (__vfs_write+0xa8/0xd8)
+[<800de678>] (__vfs_write) from [<800dedd4>] (vfs_write+0x90/0x164)
+[<800dedd4>] (vfs_write) from [<800df600>] (SyS_write+0x44/0x9c)
+[<800df600>] (SyS_write) from [<8000f480>] (ret_fast_syscall+0x0/0x3c)
+Mem-Info:
+active_anon:14460 inactive_anon:4009 isolated_anon:0
+ active_file:30 inactive_file:49 isolated_file:0
+ unevictable:0 dirty:0 writeback:1 unstable:0
+ slab_reclaimable:403 slab_unreclaimable:1480
+ mapped:26 shmem:17058 pagetables:87 bounce:0
+ free:6288 free_pcp:2 free_cma:5944
+Normal free:25216kB min:1376kB low:1720kB high:2064kB active_anon:57840kB inactive_anon:16036kB active_file:120kB inactive_file:196kB unevictable:0kB isolated(anon):0kB isolated(file):0kB present:131072kB managed:119280kB mlocked:0kB dirty:0kB writeback:4kB mapped:104kB shmem:68232kB slab_reclaimable:1612kB slab_unreclaimable:5856kB kernel_stack:488kB pagetables:348kB unstable:0kB bounce:0kB free_pcp:8kB local_pcp:8kB free_cma:23776kB writeback_tmp:0kB pages_scanned:0 all_unreclaimable? no
+lowmem_reserve[]: 0 0 0
+Normal: 0*4kB 2*8kB (U) 9*16kB (U) 3*32kB (UC) 2*64kB (UC) 2*128kB (UC) 0*256kB 0*512kB 2*1024kB (UC) 1*2048kB (C) 1*4096kB (C) 0*8192kB 1*16384kB (C) 0*32768kB = 25216kB
+17143 total pagecache pages
+0 pages in swap cache
+Swap cache stats: add 0, delete 0, find 0/0
+Free swap  = 0kB
+Total swap = 0kB
+32768 pages RAM
+0 pages HighMem/MovableOnly
+4294962052 pages reserved
+8192 pages cma reserved
+[ pid ]   uid  tgid total_vm      rss nr_ptes nr_pmds swapents oom_score_adj name
+[   82]     0    82      500       10       5       0        0             0 syslogd
+[   84]     0    84      500       17       4       0        0             0 klogd
+[   87]     0    87      640       75       5       0        0         -1000 udevd
+[  111]     1   111      343       16       4       0        0             0 portmap
+[  124]  1000   124      558       34       4       0        0             0 dbus-daemon
+[  139]     0   139      500       15       5       0        0             0 udhcpd
+[  158]     0   158     1342       74       6       0        0             0 hostapd
+[  164]     0   164      470       21       5       0        0             0 dropbear
+[  175]     0   175      500       10       4       0        0             0 telnetd
+[  179]     0   179      895       47       5       0        0             0 vsftpd
+[  191]     0   191    22620      998      26       0        0             0 TFT
+[  194]     0   194      526       24       5       0        0             0 sh
+[  195]     0   195      382       42       4       0        0             0 boa
+Out of memory: Kill process 191 (TFT) score 33 or sacrifice child
+Killed process 191 (TFT) total-vm:90480kB, anon-rss:3992kB, file-rss:0kB
+kworker/u2:1 invoked oom-killer: gfp_mask=0x2142d0, order=1, oom_score_adj=0
+CPU: 0 PID: 65 Comm: kworker/u2:1 Not tainted 4.1.15-g8833481-dirty #73
+Hardware name: Freescale i.MX6 Ultralite (Device Tree)
+Workqueue: phy0 rt2x00usb_work_rxdone
+[<80015b2c>] (unwind_backtrace) from [<80012720>] (show_stack+0x10/0x14)
+[<80012720>] (show_stack) from [<806fc89c>] (dump_stack+0x84/0xc4)
+[<806fc89c>] (dump_stack) from [<806fa9dc>] (dump_header+0x88/0x1b0)
+[<806fa9dc>] (dump_header) from [<800a4f9c>] (oom_kill_process+0x20c/0x3f4)
+[<800a4f9c>] (oom_kill_process) from [<800a5444>] (__out_of_memory+0x250/0x374)
+[<800a5444>] (__out_of_memory) from [<800a56ec>] (out_of_memory+0x58/0x70)
+[<800a56ec>] (out_of_memory) from [<800a9830>] (__alloc_pages_nodemask+0x5b0/0x884)
+[<800a9830>] (__alloc_pages_nodemask) from [<800d85b8>] (new_slab+0x1c0/0x21c)
+[<800d85b8>] (new_slab) from [<800d9b70>] (__slab_alloc.constprop.1+0x2c0/0x328)
+[<800d9b70>] (__slab_alloc.constprop.1) from [<800daa7c>] (__kmalloc_track_caller+0x150/0x180)
+[<800daa7c>] (__kmalloc_track_caller) from [<8054d148>] (__alloc_skb+0x70/0x174)
+[<8054d148>] (__alloc_skb) from [<8054e720>] (__netdev_alloc_skb+0x1c/0x44)
+[<8054e720>] (__netdev_alloc_skb) from [<803ffe68>] (rt2x00queue_alloc_rxskb+0x50/0x134)
+[<803ffe68>] (rt2x00queue_alloc_rxskb) from [<803fca98>] (rt2x00lib_rxdone+0x70/0x59c)
+[<803fca98>] (rt2x00lib_rxdone) from [<80402540>] (rt2x00usb_work_rxdone+0x44/0x74)
+[<80402540>] (rt2x00usb_work_rxdone) from [<8003eca0>] (process_one_work+0x124/0x334)
+[<8003eca0>] (process_one_work) from [<8003eefc>] (worker_thread+0x4c/0x480)
+[<8003eefc>] (worker_thread) from [<80043bb0>] (kthread+0xdc/0xf4)
+[<80043bb0>] (kthread) from [<8000f528>] (ret_from_fork+0x14/0x2c)
+Mem-Info:
+active_anon:14278 inactive_anon:4417 isolated_anon:0
+ active_file:2 inactive_file:4 isolated_file:0
+ unevictable:0 dirty:0 writeback:0 unstable:0
+ slab_reclaimable:395 slab_unreclaimable:1378
+ mapped:2 shmem:18287 pagetables:61 bounce:0
+ free:6288 free_pcp:15 free_cma:5944
+Normal free:25152kB min:1376kB low:1720kB high:2064kB active_anon:57112kB inactive_anon:17668kB active_file:0kB inactive_file:24kB unevictable:0kB isolated(anon):0kB isolated(file):0kB present:131072kB managed:119280kB mlocked:0kB dirty:0kB writeback:0kB mapped:8kB shmem:73148kB slab_reclaimable:1580kB slab_unreclaimable:5512kB kernel_stack:408kB pagetables:244kB unstable:0kB bounce:0kB free_pcp:60kB local_pcp:60kB free_cma:23776kB writeback_tmp:0kB pages_scanned:2000 all_unreclaimable? yes
+lowmem_reserve[]: 0 0 0
+Normal: 6*4kB (U) 15*8kB (U) 1*16kB (U) 1*32kB (C) 2*64kB (UC) 2*128kB (UC) 0*256kB 0*512kB 2*1024kB (UC) 1*2048kB (C) 1*4096kB (C) 0*8192kB 1*16384kB (C) 0*32768kB = 25152kB
+18290 total pagecache pages
+0 pages in swap cache
+Swap cache stats: add 0, delete 0, find 0/0
+Free swap  = 0kB
+Total swap = 0kB
+32768 pages RAM
+0 pages HighMem/MovableOnly
+4294962052 pages reserved
+8192 pages cma reserved
+[ pid ]   uid  tgid total_vm      rss nr_ptes nr_pmds swapents oom_score_adj name
+[   82]     0    82      500       14       5       0        0             0 syslogd
+[   84]     0    84      500       17       4       0        0             0 klogd
+[   87]     0    87      640       75       5       0        0         -1000 udevd
+[  111]     1   111      343       16       4       0        0             0 portmap
+[  124]  1000   124      558       34       4       0        0             0 dbus-daemon
+[  139]     0   139      500       15       5       0        0             0 udhcpd
+[  158]     0   158     1342       73       6       0        0             0 hostapd
+[  164]     0   164      470       21       5       0        0             0 dropbear
+[  175]     0   175      500       10       4       0        0             0 telnetd
+[  179]     0   179      895       47       5       0        0             0 vsftpd
+[  194]     0   194      526       24       5       0        0             0 sh
+[  195]     0   195      382       42       4       0        0             0 boa
+Out of memory: Kill process 158 (hostapd) score 2 or sacrifice child
+Killed process 158 (hostapd) total-vm:5368kB, anon-rss:292kB, file-rss:0kB
+klogd invoked oom-killer: gfp_mask=0x201da, order=0, oom_score_adj=0
+CPU: 0 PID: 84 Comm: klogd Not tainted 4.1.15-g8833481-dirty #73
+Hardware name: Freescale i.MX6 Ultralite (Device Tree)
+[<80015b2c>] (unwind_backtrace) from [<80012720>] (show_stack+0x10/0x14)
+[<80012720>] (show_stack) from [<806fc89c>] (dump_stack+0x84/0xc4)
+[<806fc89c>] (dump_stack) from [<806fa9dc>] (dump_header+0x88/0x1b0)
+[<806fa9dc>] (dump_header) from [<800a4f9c>] (oom_kill_process+0x20c/0x3f4)
+[<800a4f9c>] (oom_kill_process) from [<800a5444>] (__out_of_memory+0x250/0x374)
+[<800a5444>] (__out_of_memory) from [<800a56ec>] (out_of_memory+0x58/0x70)
+[<800a56ec>] (out_of_memory) from [<800a9830>] (__alloc_pages_nodemask+0x5b0/0x884)
+[<800a9830>] (__alloc_pages_nodemask) from [<800a3f20>] (filemap_fault+0x20c/0x474)
+[<800a3f20>] (filemap_fault) from [<800c1438>] (__do_fault+0x3c/0x9c)
+[<800c1438>] (__do_fault) from [<800c47d0>] (handle_mm_fault+0x7cc/0xd78)
+[<800c47d0>] (handle_mm_fault) from [<8001bef0>] (do_page_fault+0x1f0/0x37c)
+[<8001bef0>] (do_page_fault) from [<8000933c>] (do_PrefetchAbort+0x34/0x9c)
+[<8000933c>] (do_PrefetchAbort) from [<800136dc>] (ret_from_exception+0x0/0x24)
+Exception stack(0x844b9fb0 to 0x844b9ff8)
+9fa0:                                     00aa9008 76fb33d7 00000001 76f320f5
+9fc0: 00aa9008 76fb33d7 7ef487a4 7ef486c0 76fb33d4 76fcd000 76ff44c0 00000003
+9fe0: 00000000 7ef486b8 76f1335f 76f320f4 20070030 ffffffff
+Mem-Info:
+active_anon:14211 inactive_anon:4423 isolated_anon:0
+ active_file:1 inactive_file:7 isolated_file:0
+ unevictable:0 dirty:0 writeback:0 unstable:0
+ slab_reclaimable:394 slab_unreclaimable:1459
+ mapped:3 shmem:18299 pagetables:55 bounce:0
+ free:6286 free_pcp:5 free_cma:5944
+Normal free:25144kB min:1376kB low:1720kB high:2064kB active_anon:56844kB inactive_anon:17692kB active_file:4kB inactive_file:28kB unevictable:0kB isolated(anon):0kB isolated(file):0kB present:131072kB managed:119280kB mlocked:0kB dirty:0kB writeback:0kB mapped:12kB shmem:73196kB slab_reclaimable:1576kB slab_unreclaimable:5836kB kernel_stack:400kB pagetables:220kB unstable:0kB bounce:0kB free_pcp:20kB local_pcp:20kB free_cma:23776kB writeback_tmp:0kB pages_scanned:23860 all_unreclaimable? yes
+lowmem_reserve[]: 0 0 0
+Normal: 58*4kB (U) 26*8kB (U) 2*16kB (U) 1*32kB (C) 1*64kB (C) 2*128kB (UC) 1*256kB (U) 1*512kB (U) 1*1024kB (C) 1*2048kB (C) 1*4096kB (C) 0*8192kB 1*16384kB (C) 0*32768kB = 25144kB
+18306 total pagecache pages
+0 pages in swap cache
+Swap cache stats: add 0, delete 0, find 0/0
+Free swap  = 0kB
+Total swap = 0kB
+32768 pages RAM
+0 pages HighMem/MovableOnly
+4294962052 pages reserved
+8192 pages cma reserved
+[ pid ]   uid  tgid total_vm      rss nr_ptes nr_pmds swapents oom_score_adj name
+[   82]     0    82      500       14       5       0        0             0 syslogd
+[   84]     0    84      500       17       4       0        0             0 klogd
+[   87]     0    87      640       75       5       0        0         -1000 udevd
+[  111]     1   111      343       16       4       0        0             0 portmap
+[  124]  1000   124      558       34       4       0        0             0 dbus-daemon
+[  139]     0   139      500       15       5       0        0             0 udhcpd
+[  164]     0   164      470       21       5       0        0             0 dropbear
+[  175]     0   175      500       10       4       0        0             0 telnetd
+[  179]     0   179      895       47       5       0        0             0 vsftpd
+[  194]     0   194      526       24       5       0        0             0 sh
+[  195]     0   195      382       42       4       0        0             0 boa
+Out of memory: Kill process 179 (vsftpd) score 1 or sacrifice child
+Killed process 179 (vsftpd) total-vm:3580kB, anon-rss:188kB, file-rss:0kB

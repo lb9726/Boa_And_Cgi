@@ -1,0 +1,13 @@
+alias区别名： 临时别名 永久别名
+临时别名： 只在当前设置的终端生效
+永久别名：在所有的终端都有效
+临时别名设置方法： alias lb="gedit .bashrc"
+即alias别名="指令名称" "="号之间无空格
+显示指定别名设置 alias lb
+删除别名 unalias aliasNmae 例如： unalias lb
+
+
+永久别名： 在~下打开 .bashrc 即可，然后在
+#some more ls aliases的alias l='ls -CF'后加入你想要加入的东西，
+其间还可以加入&& || 等符号
+alias libo='cd /home/libo/Desktop/17cy'保存即可

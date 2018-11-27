@@ -1,0 +1,12 @@
+Ubuntu下基于格式化命令 格式化U盘的方法
+转载 2014年07月11日 17:53:05 400
+通常Ubuntu下格式化磁盘和Windows系统下差不多；先找到U盘图标，右击就有格式化了
+但是有一种情况就比较揪心，就是当分区出现问题而不能识别的时候，这时在Win下要专业的工具才能格式化，而在Ubuntu下可以借助命令模式强行格式化。
+首先执行sudo fdisk -l查看你的u盘的序号，通常是/dev/sdb之类的，U盘分区通常是/dev/sdb1
+对于u盘我们一般格式化为FAT格式或者FAT32格式，不过在linux下这些会都显示为FAT格式。我们只需要执行命令：
+sudo mkfs.vfat -F 32 /dev/sdb1即可将u盘格式化为fat32格式。
+假如你要把指定磁盘格式化为NTFS格式那么你需要sudo apt-get install ntfsprogs来安装ntfs读写工具，然后执行sudo mkfs.ntfs /dev/sda1，此过程会很慢。对于要格式化为linux ext格式的分区就更容易了：
+sudo mkfs.ext4 /dev/sda1 # 格式化为ext4分区
+sudo mkfs.ext3 /dev/sda1 # 格式化为ext3分区
+sudo mkfs.ext2 /dev/sda1 #格式化为ext2分区
+PS：对于要格式化的分区必须要先用umount卸载掉才能格式化。

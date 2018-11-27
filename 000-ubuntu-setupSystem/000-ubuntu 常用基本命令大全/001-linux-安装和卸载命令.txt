@@ -1,0 +1,2 @@
+sudo dpkg -i *.deb 安装
+sudo apt-get purge 卸载

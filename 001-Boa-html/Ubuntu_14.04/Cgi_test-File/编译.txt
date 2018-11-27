@@ -1,0 +1,10 @@
+ 由于使用静态库文件会使得可执行程序变大，所以个人使用了生成动态库的方式
+ 新建一个目录Cgi：把下载的源码里面的 cgic.c cgic.h 文件复制进去
+ 在当前位置打开终端，使用命令编译生成动态库文件libcgic.so
+ gcc -shared -fPIC cgic.c -o libcgic.so
+ 会生成一个libcgic.so的库文件
+ 
+ 新建另一个目录Cgi_test-File
+ 拷贝Cgi里面的 cgic.h  libcgic.so 拷贝到这个目录里面
+ 执行命令 gcc cgictest.c -o cgicTest.cgi -L. libcgic.so
+ 生成cgicTest.cgi 文件

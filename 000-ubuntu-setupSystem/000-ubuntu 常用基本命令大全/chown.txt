@@ -1,0 +1,33 @@
+
+http://man.linuxde.net/chown
+
+例如在桌面上有一个属于root用户的1.txt的文件
+libo@ubuntu:~/Desktop$ ls -l ;
+total 40
+drwxrwxr-x 22 libo libo 4096 Jul  4 13:14 000-emulation
+-rw-------  1 root root  883 Jul  6 08:48 1.txt
+-rw-------  1 root root  883 Jul  6 08:47 cgicsave.env
+-rw-rw-r--  1 libo libo 1010 Jul  5 08:54 cgi.html
+drwxrwxr-x  5 libo libo 4096 Jul  4 17:32 Embed_WebServer
+drwxrwxr-x 12 libo libo 4096 Jul  4 11:12 Repository
+drwxrwxr-x  2 libo libo 4096 Jul  3 18:09 Txt-record
+drwxrwxr-x  3 libo libo 4096 Jul  5 11:41 usrfs
+drwxrwxr-x  3 libo libo 4096 Jul  5 13:43 usrfs_new
+drwxrwxr-x  3 libo libo 4096 Jul  4 11:06 系统方面需要整合的问题点
+
+
+libo@ubuntu:~/Desktop$ sudo chown libo:libo 1.txt
+
+libo@ubuntu:~/Desktop$ ls -l
+total 40
+drwxrwxr-x 22 libo libo 4096 Jul  4 13:14 000-emulation
+-rw-------  1 libo libo  883 Jul  6 08:48 1.txt
+-rw-------  1 root root  883 Jul  6 08:47 cgicsave.env
+-rw-rw-r--  1 libo libo 1010 Jul  5 08:54 cgi.html
+drwxrwxr-x  5 libo libo 4096 Jul  4 17:32 Embed_WebServer
+drwxrwxr-x 12 libo libo 4096 Jul  4 11:12 Repository
+drwxrwxr-x  2 libo libo 4096 Jul  3 18:09 Txt-record
+drwxrwxr-x  3 libo libo 4096 Jul  5 11:41 usrfs
+drwxrwxr-x  3 libo libo 4096 Jul  5 13:43 usrfs_new
+drwxrwxr-x  3 libo libo 4096 Jul  4 11:06 系统方面需要整合的问题点
+

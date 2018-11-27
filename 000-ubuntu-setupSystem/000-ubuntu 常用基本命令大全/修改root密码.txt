@@ -1,0 +1,8 @@
+sudo passwd 可以修改root密码
+
+libo@libo:~$ sudo passwd
+[sudo] password for libo: 
+输入新的 UNIX 密码： 
+重新输入新的 UNIX 密码： 
+passwd：已成功更新密码
+libo@libo:~$

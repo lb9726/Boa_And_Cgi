@@ -1,0 +1,15 @@
+find ./ -name "*~" -exec rm -f {} \; 回车
+删除当前目录和子目录中匹配的文件
+find . -name "*.bmp"
+find / -type f -size 0 -exec ls -l {} \;
+查找系统中所有文件长度大小为0的普通文件，并列出完整路径
+
+
+find . -name "*.qml" |xargs grep -nr "cc_Txt_Time"
+find . -name "*.qml" |xargs grep -nr " *cc_Txt_Time *"
+
+
+find 命令还可以搜索文件大小
+find . -size +100M 当前目录大于100M的单个文件
+
+ find . -size +100k 当前目录大于100k的单个文件

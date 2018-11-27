@@ -1,0 +1,108 @@
+sudo apt-get install g++-4.6 gcc-4.6
+sudo apt-get install g++-4.6-multilib
+sudo apt-get install g++-4.7-multilib
+
+查看安装了哪些gcc，也可以在终端敲gcc 按2下Table键
+ls /usr/bin/gcc* -l 
+查看安装了哪些g++，也可以在终端敲g++ 按2下Table键
+ls /usr/bin/g++* -l
+
+同理当安装过多个gcc ，g++的版本的时候，也可以随意切换版本进行操作ls /usr/bin/g++* -l
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.6 100
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.7 100
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 100
+
+libo@ubuntu:/usr/lib$ sudo update-alternatives --config gcc
+There are 3 choices for the alternative gcc (providing /usr/bin/gcc).
+
+  Selection    Path              Priority   Status
+------------------------------------------------------------
+  0            /usr/bin/gcc-4.8   100       auto mode
+  1            /usr/bin/gcc-4.6   100       manual mode
+  2            /usr/bin/gcc-4.7   100       manual mode
+* 3            /usr/bin/gcc-4.8   100       manual mode
+
+Press enter to keep the current choice[*], or type selection number: 3
+
+
+同理当安装过多个gcc ，g++的版本的时候，也可以随意切换版本进行操作
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.6 100
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.7 100
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 100
+
+
+libo@ubuntu:/usr/lib$ sudo update-alternatives --config g++
+There are 3 choices for the alternative g++ (providing /usr/bin/g++).
+
+  Selection    Path              Priority   Status
+------------------------------------------------------------
+* 0            /usr/bin/g++-4.6   100       auto mode
+  1            /usr/bin/g++-4.6   100       manual mode
+  2            /usr/bin/g++-4.7   100       manual mode
+  3            /usr/bin/g++-4.8   100       manual mode
+
+Press enter to keep the current choice[*], or type selection number:3
+
+
+
+
+http://www.cnblogs.com/loveyakamoz/archive/2012/12/26/2833967.html
+更改Ubuntu gcc、g++默认编译器版本
+转一篇文章：
+
+升级Ubuntu到11.10，但在编译Android的时候出错了。这个Android在升级系统之前编译是没有错误的，对比发现升级到Ubuntu 11.10后gcc、g++的版本都是4.6.1。而升级之前的版本是4.4.6。我想多半原因就在这里了。要想解决问题需要更改Ubuntu gcc、g++默认编译器版本。google一把发现有两种方法可以更改。
+
+方法一：
+
+首先，看一下你的Ubuntu都装了哪些版本的gcc 用命令：ls /usr/bin/gcc* -l  我的显示是
+
+lrwxrwxrwx 1 root root      7 2011-08-14 15:17 /usr/bin/gcc -> gcc-4.6
+
+-rwxr-xr-x 1 root root 224544 2011-10-06 05:47 /usr/bin/gcc-4.4
+
+-rwxr-xr-x 1 root root 237072 2011-09-17 17:25 /usr/bin/gcc-4.5
+
+-rwxr-xr-x 1 root root 302104 2011-09-17 05:43 /usr/bin/gcc-4.6
+
+由上面显示可以看出默认安装的是gcc-4.6，现在来改成gcc-4.4
+
+删除gcc－4.6的软连接文件/usr/bin/gcc。（只是删除软连接）
+
+命令：sudo rm /usr/bin/gcc
+
+然后建一个软连接，指向gcc-4.4。
+
+命令：sudo ln -s /usr/bin/gcc-4.4 /usr/bin/gcc
+
+ok了，www.linuxidc.com 现在用命令：gcc -v  显示如下：
+
+使用内建 specs。
+
+目标：i686-linux-gnu
+
+配置为：../src/configure -v --with-pkgversion='Ubuntu/Linaro 4.4.6-11ubuntu2' --with-bugurl=file:///usr/share/doc/gcc-4.4/README.Bugs --enable-languages=c,c++,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-4.4 --enable-shared --enable-linker-build-id --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.4 --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-objc-gc --enable-targets=all --disable-werror --with-arch-32=i686 --with-tune=generic --enable-checking=release --build=i686-linux-gnu --host=i686-linux-gnu --target=i686-linux-gnu
+
+线程模型：posix
+
+gcc 版本 4.4.6 (Ubuntu/Linaro 4.4.6-11ubuntu2)
+
+用同样的方法更改g++的默认版本。
+
+方法二：
+
+修改默认gcc和g++为4.4的版本
+
+sudo update-alternatives --remove-all gcc
+
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.4 40
+
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.4 40
+
+配置默认的gcc和g++
+
+sudo update-alternatives --config gcc
+
+sudo update-alternatives --config g++
+
+
+

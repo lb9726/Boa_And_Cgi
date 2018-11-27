@@ -1,0 +1,13 @@
+sudo apt-get install gcc g++ binutils patch bzip2 flex make gettext pkg-config unzip zlib1g-dev libc6-dev subversion libncurses5-dev gawk sharutils curl libxml-parser-perl ocaml-nox
+
+cd qsdk
+make package/symlinks
+cp qca/configs/qca955x.ln/ar71xx_<profile>.config .config
+cp qca/configs/qca955x.ln/ar71xx_wireless_qca_wifi.config .config
+make defconfig
+make V=s -j 16
+
+编译成功之后，会生成一个staging_dir目录，在这个目录下有 
+host   target-mips_r2_uClibc-0.9.33.2    toolchain-mips_r2_gcc-4.6-linaro_uClibc-0.9.33.2
+
+在 toolchain-mips_r2_gcc-4.6-linaro_uClibc-0.9.33.2 的bin目录下各种编译器之类的东西

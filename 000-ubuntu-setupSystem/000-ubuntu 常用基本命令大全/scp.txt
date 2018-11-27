@@ -1,0 +1,24 @@
+scp protocol_test root@192.168.152.139:/home/root
+ssh root@192.168.152.139
+
+ssh 安装 sudo apt-get install ssh
+ssh menghanyong@172.26.182.166
+输入密码 回车
+输入正确之后显示上次登录时间
+
+终端变为 menghanyong~$：
+此时可以操作menghanyong的电脑了
+在本终端拷贝文件时：
+scp 123.png libo@172.26.182.96:/home/libo/Desktop
+输入密码 回车
+显示拷贝结果
+
+其他终端拷贝（非被远程ssh登录的客户终端)
+scp menghanyong@172.26.182.166:/home/menghanyong/123.png /home/libo/Desktop
+输入密码 回车
+这样的scp拷贝支持双向操作：从libo->menghanyong menghanyong->libo
+不登录时就把远程端的文件拷贝到本地即可
+登录的了，就把登录了的文件，拷贝到指定了用户名@ip:绝对路径的方式拷贝
+
+
+

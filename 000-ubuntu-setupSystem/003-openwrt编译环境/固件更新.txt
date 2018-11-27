@@ -1,0 +1,22 @@
+﻿1. 启动一个TFTP服务器。
+   其IP地址为192.168.1.xx。
+   将内核和rootfs映像文件拷贝至其根目录。
+   
+2. 在UBOOT下配置板子和TFTP服务器的IP：
+    setenv serverip 192.168.1.xx
+    setenv ipaddr 192.168.1.yy
+    saveenv
+
+3. 8MB flash
+   - 更新文件系统
+     tftp 0x80060000 openwrt-ar71xx-generic-ap143-8M-rootfs-squashfs.bin;erase 0x9f050000 +$filesize;cp.b $fileaddr 0x9f050000 $filesize
+   
+   - 更新内核
+     tftp 0x80060000 openwrt-ar71xx-generic-ap143-8M-kernel.bin;erase 0x9f680000 +$filesize;cp.b $fileaddr 0x9f680000 $filesize
+     
+4. 16MB flash
+   - 更新文件系统
+     tftp 0x80060000 openwrt-ar71xx-generic-ap143-16M-rootfs-squashfs.bin;erase 0x9f050000 +$filesize;cp.b $fileaddr 0x9f050000 $filesize
+   
+   - 更新内核
+     tftp 0x80060000 openwrt-ar71xx-generic-ap143-16M-kernel.bin;erase 0x9fE80000 +$filesize;cp.b $fileaddr 0x9fE80000 $filesize

@@ -1,0 +1,138 @@
+<html>
+<head>
+<style>
+div#course {
+	background:#aaaaaa 0 -700px no-repeat;
+	padding:66px 0 10px 0;
+	}
+
+	div#navsecond ul, div#navsecond li	{
+	margin: 0;
+	padding: 0;
+	font-family:'微软雅黑';
+	}
+
+
+div#navsecond li {
+	list-style: none;
+	}
+
+div#navsecond a {
+	display:block;
+	padding:5px 10 5px 15px;
+	font-size:19px;
+	border-bottom:0px solid #ddd;
+	text-decoration:none;
+	}
+
+div#navsecond ul a.active {
+	background : #f5f5f5;
+	color:#990000;
+	} 
+	
+	
+div#navsecond a:link, div#navsecond a:visited	{
+	text-decoration : none;
+	color:#000000;
+	background : transparent;
+	} 
+
+div#navsecond a:hover	{
+	text-decoration : none;
+	color : #fff;
+	background : #aaaaaa;
+	}
+
+div#navsecond a:active	{
+	text-decoration : none;
+	color : #fff;
+	background : #BD2D30;
+	}
+
+div#navsecond li.currentLink a:link, div#navsecond li.currentLink a:visited	{
+	text-decoration : none;
+	color:#ffffff;
+	background-color: #BD2D30;
+	}	
+</style>
+	<script type="text/javascript" src="lib/jquery.js"></script>
+</head>
+<title></title>
+<body bgcolor="lightblue" >
+<div id="navsecond">
+<ul>
+<li><a id="volume1" href="./volumeSetting.html" target="showFrame" id="id_volume" onclick="currentIndexChange(1)">Volume</a><br/></li>
+<li><a id="BackLight1" href="./backlight.html" target="showFrame" id="id_backlight" onclick="currentIndexChange(2)">BackLight</a><br/></li>
+<li><a id="AutoTest1" href="./AutoTest.html" target="showFrame" id="id_AutoTest" onclick="currentIndexChange(3)">AutoTest</a><br/></li>
+<li><a id="Layout1" href="./Layout.html" target="showFrame" id="id_Layout" onclick="currentIndexChange(4)">Layout</a><br/></li>
+<li><a id="Style1" href="./Style.html" target="showFrame" id="id_Style" onclick="currentIndexChange(5)">Style</a><br/></li>
+<li><a id="Application1" href="./Application.html" target="showFrame" id="id_Application" onclick="currentIndexChange(6)">Application</a><br/></li>
+</ul>
+</div>
+<script type="text/javascript">
+	function currentIndexChange(index)
+	{
+		console.log("index=", index);
+		if (1 === index)
+		{
+			$("a#volume1").css("background-color", "#BD2D30");
+			$("a#BackLight1").css("background-color", "lightblue");
+			$("a#AutoTest1").css("background-color", "lightblue");
+			$("a#Layout1").css("background-color", "lightblue");
+			$("a#Style1").css("background-color", "lightblue");
+			$("a#Application1").css("background-color", "lightblue");
+			
+		}
+		else if (2 === index)
+		{
+			$("a#volume1").css("background-color", "lightblue");
+			$("a#BackLight1").css("background-color", "#BD2D30");
+			$("a#AutoTest1").css("background-color", "lightblue");
+			$("a#Layout1").css("background-color", "lightblue");
+			$("a#Style1").css("background-color", "lightblue");
+			$("a#Application1").css("background-color", "lightblue");
+		}
+		else if (3 === index)
+		{
+			$("a#volume1").css("background-color", "lightblue");
+			$("a#BackLight1").css("background-color", "lightblue");
+			$("a#AutoTest1").css("background-color", "#BD2D30");
+			$("a#Layout1").css("background-color", "lightblue");
+			$("a#Style1").css("background-color", "lightblue");
+			$("a#Application1").css("background-color", "lightblue");
+		}
+		else if (4 === index)
+		{
+			$("a#volume1").css("background-color", "lightblue");
+			$("a#BackLight1").css("background-color", "lightblue");
+			$("a#AutoTest1").css("background-color", "lightblue");
+			$("a#Layout1").css("background-color", "#BD2D30");
+			$("a#Style1").css("background-color", "lightblue");
+			$("a#Application1").css("background-color", "lightblue");
+		}
+		else if (5 === index)
+		{
+			$("a#volume1").css("background-color", "lightblue");
+			$("a#BackLight1").css("background-color", "lightblue");
+			$("a#AutoTest1").css("background-color", "lightblue");
+			$("a#Layout1").css("background-color", "lightblue");
+			$("a#Style1").css("background-color", "#BD2D30");
+			$("a#Application1").css("background-color", "lightblue");
+		}
+		else if (6 === index)
+		{
+			$("a#volume1").css("background-color", "lightblue");
+			$("a#BackLight1").css("background-color", "lightblue");
+			$("a#AutoTest1").css("background-color", "lightblue");
+			$("a#Layout1").css("background-color", "lightblue");
+			$("a#Style1").css("background-color", "lightblue");
+			$("a#Application1").css("background-color", "#BD2D30");
+		}
+		else
+		{
+		    // do nothing just reserved
+		}
+	}
+</script>
+</body>
+</html>

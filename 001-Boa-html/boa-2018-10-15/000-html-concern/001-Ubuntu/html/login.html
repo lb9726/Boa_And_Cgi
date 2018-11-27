@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login page</title>
+ 
+    <link rel="stylesheet" type="text/css" href="css/login.css"/>
+	<script type="text/javascript" src="lib/global.js"></script>
+	        <style type="text/css">
+            /*SELECT W/DOWN-ARROW*/
+            select#selectPointOfInterest
+            {
+               width                    : 200pt;
+               height                   : 36pt;
+               line-height              : 30pt;
+               padding-right            : 20pt;
+               text-indent              : 4pt;
+               text-align               : left;
+               vertical-align           : middle;
+               border                   : 1px solid #94c1e7;
+               -moz-border-radius       : 6px;
+               -webkit-border-radius    : 6px;
+               border-radius            : 6px;
+               -webkit-appearance       : none;
+               -moz-appearance          : none;
+               appearance               : none;
+               font-family              : SimHei;
+               font-size                : 18pt;
+               font-weight              : 500;
+               color                    : RGBA(102,102,102,0.7);
+               cursor                   : pointer;
+               outline                  : none;
+            }
+
+            /*LABEL FOR SELECT*/
+            label#lblSelect{ position: relative; display: inline-block;}
+
+            /*DOWNWARD ARROW (25bc)*/
+            label#lblSelect::after
+            {
+                content                 : "\25bc";
+                position                : absolute;
+                top                     : 0;
+                right                   : 0;
+                bottom                  : 0;
+                width                   : 20pt;
+                line-height             : 40pt;
+                vertical-align          : middle;
+                text-align              : center;
+                background              : #94c1e7;
+                color                   : #2984ce;
+               -moz-border-radius       : 0 6px 6px 0;
+               -webkit-border-radius    : 0 6px 6px 0;
+                border-radius           : 0 6px 6px 0;
+                pointer-events          : none;
+            }
+        </style>
+</head>
+ 
+<script>
+    function load()
+    {
+        console.log("is loading");
+		var lanFlag = localStorage.getItem('languageValue');
+		console.log("lanFlag = ", lanFlag);
+		if (1 == lanFlag)
+		{			
+			var id = document.getElementById('selectPointOfInterest');
+			id[lanFlag].selected = true;
+			indexChange();
+		}
+		else
+		{
+			var id = document.getElementById('selectPointOfInterest');
+			id[0].selected = true;
+			localStorage.setItem("languageValue", 0);
+			console.log("set languageValue is 0");
+		}
+		loadJsonDoc('../cgi-bin/login.cgi');
+    }
+    function unload()
+    {
+        console.log("is unloading");
+    }
+</script>
+
+<body onload="load()" onunload="unload()">
+<label id="lblSelect">
+            <select id="selectPointOfInterest" title="Select points of interest nearby" onchange="indexChange()">
+                <!--option value="">-select language-</option-->
+                <option value="English">English</option>
+                <option value="French">French</option>
+            </select>
+        </label>
+<div id="login_frame">
+ 
+   
+    <!--label type="label" id="image_logo">Login</label-->
+    <img id="idSodimasLogo" alt="start" src="images/logo.png" />
+    <form method="post" action="login.js">
+ 
+        <p><label class="label_input" id="labelUserName">username</label><input type="text" id="username" class="text_field"/></p>
+        <p><label class="label_input" id="labelPasswd">password</label><input type="password" id="password" class="text_field"/></p>
+ 
+        <div id="login_control">
+            <input type="button" id="btn_login" value="login" onclick="login();"/>
+        </div>
+    </form>
+</div>
+
+ <script>
+function login() 
+{
+    var username = document.getElementById("username");
+    var pass = document.getElementById("password");
+    if (username.value == "")
+	{ 
+        alert("please enter username"); 
+    }
+	else if (pass.value  == "")
+	{ 
+        alert("please enter password"); 
+    }
+	else if (username.value == "sodimas" && pass.value == "sodimas")
+	{ 
+        window.location.href = "sodimas.html";
+    }
+	else
+	{
+        alert("Please enter the correct username and password") 
+    }
+}
+
+function indexChange()
+{
+	var id = document.getElementById('selectPointOfInterest');
+	var valStr = id.value;
+	console.log("valStr = ", valStr);
+	
+	var username = document.getElementById("labelUserName");
+	var pass = document.getElementById("labelPasswd");
+	var loginText = document.getElementById("image_logo");
+	var btnLoginText = document.getElementById("btn_login");
+	if ("English" == valStr)
+	{
+		username.innerHTML = "username";
+		pass.innerHTML = "password";
+		btnLoginText.value = "login";
+		localStorage.setItem("languageValue", 0);
+		console.log("set languageValue is 0");
+	}
+	else if ("French" == valStr)
+	{
+		username.innerHTML = "aaaaaaaaaaaaaaaa";
+		pass.innerHTML = "bbbbbbbbbbbbbbbbb";
+		btnLoginText.value = "eeeeeeeeeee";
+		localStorage.setItem("languageValue", 1);
+		console.log("set languageValue is 1");
+	}
+}
+
+function getAllParameter(str)
+{
+    console.log("str = ", str);
+    console.log("str.type", str.type);    
+    if (undefined != str.info.autotest)
+    {
+        if (true == str.info.autotest)
+        {
+            setAutoTestFlag(1);
+        }
+        else if (false == str.info.autotest)
+        {
+            setAutoTestFlag(0);
+        }
+    }
+    if (undefined != str.info.liftflrvol)
+    {
+        setMessageNum(str.info.liftflrvol);
+    }
+    if (undefined != str.info.liftarvvol)
+    {
+        setGongNum(str.info.liftarvvol)
+    }
+    if (undefined != str.info.admusicvol)
+    {
+        setMusicNum(str.info.admusicvol);        
+    }
+    if (undefined != str.info.luminance)
+    {
+        setNormalBackLight(str.info.luminance);
+    }
+    if (undefined != str.info.darklevel)
+    {
+        setStandyNum(str.info.darklevel);
+    }
+    if (undefined != str.info.standby)
+    {
+        var tmpStandby = str.info.standby / 60000; /*后面的处理收到的数据需要再乘以这个60000*/
+        setSecondStandy(tmpStandby);
+    }
+    if (undefined != str.info.rotation)
+    {
+        var tmpLayout = str.info.rotation; /*由于屏幕本身是反过来的，所以多加了180度的旋转*/ 
+        if (180 == tmpLayout)
+        {
+            setScreenOrientation(180);
+        }
+        else if (270 == tmpLayout)
+        {
+            setScreenOrientation(90);
+        }
+        else if (450 == tmpLayout)
+        {
+            setScreenOrientation(270);
+        }        
+    }
+    if (undefined != str.info.layout)
+    {
+        setLayout(str.info.layout);
+    }
+    console.log("str.info.autotest", str.info.autotest);
+    console.log("str.info.liftflrvol", str.info.liftflrvol);
+    console.log("str.info.liftarvvol", str.info.liftarvvol);
+    console.log("str.info.admusicvol", str.info.admusicvol);
+    console.log("str.info.luminance", str.info.luminance);
+    console.log("str.info.darklevel", str.info.darklevel);
+    console.log("str.info.standby", str.info.standby);
+    console.log("str.info.rotation", str.info.rotation);
+    console.log("str.info.layout", str.info.layout);
+}
+
+function loadJsonDoc(url)
+{
+    var xmlhttp;
+    var txt,x,xx,i;
+    if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    }
+    else
+    {// code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function()
+    {
+        if (4 == xmlhttp.readyState && 200 == xmlhttp.status)
+        {
+            console.log("is can get information");
+            var s = xmlhttp.responseText;
+            var str = JSON.parse(s);
+            console.log("str = ", str);
+            getAllParameter(str);
+        }
+    }
+    var text = '{"type":"getallparameter","info":"get"}'; /*huo qu suo you can shu*/
+    console.log("text = ", text);
+    xmlhttp.open("POST", url, true);
+    xmlhttp.send(text);
+}
+ </script>
+</body>
+</html>

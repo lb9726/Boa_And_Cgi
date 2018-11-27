@@ -1,0 +1,148 @@
+<html>
+<head>
+<style>
+div#course {
+	background:#aaaaaa 0 -700px no-repeat;
+	padding:66px 0 10px 0;
+	}
+
+	div#navsecond ul, div#navsecond li	{
+	margin: 0;
+	padding: 0;
+	font-family:'微软雅黑';
+	}
+
+
+div#navsecond li {
+	list-style: none;
+	}
+
+div#navsecond a {
+	display:block;
+	padding:5px 10px 5px 15px;
+	font-size:19px;
+	border-bottom:0px solid #ddd;
+	text-decoration:none;
+	}
+
+div#navsecond ul a.active {
+	background : #f5f5f5;
+	color:#990000;
+	} 
+	
+	
+div#navsecond a:link, div#navsecond a:visited	{
+	text-decoration : none;
+	color:#000000;
+	background : transparent;
+	} 
+
+div#navsecond a:hover	{
+	text-decoration : none;
+	color : #fff;
+	background : #aaaaaa;
+	}
+
+div#navsecond a:active	{
+	text-decoration : none;
+	color : #fff;
+	background : #FF7F27;
+	}
+
+div#navsecond li.currentLink a:link, div#navsecond li.currentLink a:visited	{
+	text-decoration : none;
+	color:#ffffff;
+	background-color: #BD2D30;
+	}
+
+.vertical {
+margin-top: 0px;
+margin-left: 25px;
+width: 2px;
+height: 30px;
+padding: 0;
+}	
+.faceul{
+margin-top: 2px;
+width: 185px;
+height: 35px;
+}
+
+</style>
+	<script type="text/javascript" src="lib/jquery.js"></script>
+</head>
+<title></title>
+<body >
+<div id="navsecond" >
+<ul>
+<li><img class="vertical" src="./images/vertical-Rect.png"/></li>
+<li><a id="volume1" href="./volumeSetting.html" target="showFrame" id="id_volume" onclick="currentIndexChange(1)">
+<img class="faceul" id="volume1_img" src="./images/volume-Select.png"/></a></li>
+<li><img class="vertical" src="./images/vertical-Rect.png"/></li>
+<li><a id="BackLight1" href="./backlight.html" target="showFrame" id="id_backlight" onclick="currentIndexChange(2)">
+<img class="faceul" id="backlight_img" src="./images/backlight-noSelect.png"/></a></li>
+<li><img class="vertical" src="./images/vertical-Rect.png"/></li>
+<li><a id="AutoTest1" href="./AutoTest.html" target="showFrame" id="id_AutoTest" onclick="currentIndexChange(3)">
+<img class="faceul" id="autoTest_img" src="./images/AutoTest_noSelect.png"/></a></li>
+<li><img class="vertical" src="./images/vertical-Rect.png"/></li>
+<li><a id="Layout1" href="./Layout.html" target="showFrame" id="id_Layout" onclick="currentIndexChange(4)">
+<img class="faceul" id="layout_img" src="./images/Layout_noSelect.png"/></a></li>
+<!--li><a id="Style1" href="./Style.html" target="showFrame" id="id_Style" onclick="currentIndexChange(5)">Style</a><br/></li-->
+<!--li><a id="Application1" href="./Application.html" target="showFrame" id="id_Application" onclick="currentIndexChange(6)">Application</a><br/></li-->
+</ul>
+</div>
+<script type="text/javascript">
+	function currentIndexChange(index)
+	
+	{
+		console.log("index=", index);
+		var indexImg1 = document.getElementById("volume1_img");
+		var indexImg2 = document.getElementById("backlight_img");
+		var indexImg3 = document.getElementById("autoTest_img");
+		var indexImg4 = document.getElementById("layout_img");
+		//var indexImg0 = document.getElementById("autoTestImage");
+		//var indexImg0 = document.getElementById("autoTestImage");
+		if (1 === index)
+		{
+			indexImg1.src = "./images/volume-Select.png";
+			indexImg2.src = "./images/backlight-noSelect.png";
+			indexImg3.src = "./images/AutoTest_noSelect.png";
+			indexImg4.src = "./images/Layout_noSelect.png";			
+		}
+		else if (2 === index)
+		{
+			indexImg1.src = "./images/volume-noSelect.png";
+			indexImg2.src = "./images/backlight-Select.png";
+			indexImg3.src = "./images/AutoTest_noSelect.png";
+			indexImg4.src = "./images/Layout_noSelect.png";	
+		}
+		else if (3 === index)
+		{
+			indexImg1.src = "./images/volume-noSelect.png";
+			indexImg2.src = "./images/backlight-noSelect.png";
+			indexImg3.src = "./images/AutoTest_Select.png";
+			indexImg4.src = "./images/Layout_noSelect.png";	
+		}
+		else if (4 === index)
+		{
+			indexImg1.src = "./images/volume-noSelect.png";
+			indexImg2.src = "./images/backlight-noSelect.png";
+			indexImg3.src = "./images/AutoTest_noSelect.png";
+			indexImg4.src = "./images/Layout_Select.png";	
+		}
+		else if (5 === index)
+		{
+			
+		}
+		else if (6 === index)
+		{
+			
+		}
+		else
+		{
+		    // do nothing just reserved
+		}
+	}
+</script>
+</body>
+</html>

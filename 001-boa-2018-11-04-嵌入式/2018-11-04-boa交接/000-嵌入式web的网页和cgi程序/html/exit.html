@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Exit</title>
+<link rel="stylesheet" href="./css/Exit.css" type="text/css">
+</head>
+
+<body>
+    <button id="btn" class="btn" onclick="onAction()">Exit And Save Configuration</button>   
+    <script>
+        function onAction()
+        {
+            var tmpSelect = confirm("Save Configuration?");
+            if (tmpSelect)
+            {
+                // 调用reboot命令
+                loadJsonDoc('../cgi-bin/otherHtml.cgi', tmpSelect);               
+                console.log("tmpSelect = ", tmpSelect);
+            }           
+        }
+        
+        function loadJsonDoc(url, num)
+        {
+            var xmlhttp;
+            var txt, x, xx, i;
+            if (window.XMLHttpRequest)
+            {// code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            }
+            else
+            {// code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function()
+            {
+                console.log("is onreadystatechange");
+                if (4 == xmlhttp.readyState && 200 == xmlhttp.status)
+                {
+                    console.log("is can get information");
+                    var str = xmlhttp.responseText;
+                    console.log("str = ", str);
+                }
+            }
+            var text;
+            var flag = num;
+            text = '{"type":"reboot","info":';
+            text = text + flag + '}';
+    
+            console.log("text = ", text);
+            xmlhttp.open("POST", url, true);
+            xmlhttp.send(text);
+        }
+    </script>
+</body>
+</html>
+

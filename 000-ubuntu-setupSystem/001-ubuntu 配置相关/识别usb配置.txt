@@ -1,0 +1,4 @@
+sudo groupadd usbfs
+sudo adduser libo vboxusers
+sudo adduser libo usbfs
+安装了virtualbox时需要如此设置

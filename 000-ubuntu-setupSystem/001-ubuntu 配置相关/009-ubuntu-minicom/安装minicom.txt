@@ -1,0 +1,5 @@
+sudo apt-get install minicom
+安装完成后，
+sudo minicom
+然后 ctrl A 然后按z，进入设置，按o设置
+然后 配置波特率等等，配置完成后，保存为默认然后退出

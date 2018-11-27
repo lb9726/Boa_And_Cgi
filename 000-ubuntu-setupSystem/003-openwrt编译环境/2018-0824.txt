@@ -1,0 +1,436 @@
+mx6user@mx6vm:~$ uname -a
+Linux mx6vm 4.8.0-56-generic #61~16.04.1-Ubuntu SMP Wed Jun 14 11:58:22 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
+mx6user@mx6vm:~$ lsb_release -a
+No LSB modules are available.
+Distributor ID:	Ubuntu
+Description:	Ubuntu 16.04.2 LTS
+Release:	16.04
+Codename:	xenial
+mx6user@mx6vm:~$ cd ~/Desktop/
+mx6user@mx6vm:~/Desktop$ cd 20180824/
+mx6user@mx6vm:~/Desktop/20180824$ ls
+build_guide.txt  qsdk_app_ex  qsdk_shbst_20180824.tgz  uart_driver
+mx6user@mx6vm:~/Desktop/20180824$ gedit build_guide.txt 
+^C
+mx6user@mx6vm:~/Desktop/20180824$ tar -xzf qsdk_shbst_20180824.tgz 
+mx6user@mx6vm:~/Desktop/20180824$ ls
+build_guide.txt  qsdk_shbst_20180824      uart_driver
+qsdk_app_ex      qsdk_shbst_20180824.tgz
+mx6user@mx6vm:~/Desktop/20180824$ cd qsdk_shbst_20180824/
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824$ ls
+80-Y9202-1_QCA9531QCA9558QCA9563 ILQ 2.0 CSU5 RELEASE NOTES.pdf  meta-scripts
+build_guide.txt                                                  qsdk
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824$ cat build_guide.txt 
+cd qsdk
+make package/symlinks
+cp qca/configs/qca955x.ln/ar71xx_<profile>.config .config
+make defconfig
+make V=s -j 16
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824$ cd qsdk/
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ ls
+BSDmakefile  dl    feeds.conf          include  Makefile  package  README    scpbin.sh  target  toolchain
+Config.in    docs  feeds.conf.default  LICENSE  mkgw.sh   qca      rules.mk  scripts    tmp     tools
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ make package/symlinks
+ make[1] package/symlinks
++ make[2] prepare-tmpinfo
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ cp qca/configs/qca955x.ln/ar71xx_wireless
+ar71xx_wireless_ath9k_10k.config                   ar71xx_wireless_qca_wifi.config
+ar71xx_wireless.config                             ar71xx_wireless_qca_wifi_with_mass_storage.config
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ cp qca/configs/qca955x.ln/ar71xx_wireless
+ar71xx_wireless_ath9k_10k.config                   ar71xx_wireless_qca_wifi.config
+ar71xx_wireless.config                             ar71xx_wireless_qca_wifi_with_mass_storage.config
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ cp qca/configs/qca955x.ln/ar71xx_wireless
+ar71xx_wireless_ath9k_10k.config                   ar71xx_wireless_qca_wifi.config
+ar71xx_wireless.config                             ar71xx_wireless_qca_wifi_with_mass_storage.config
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ cp qca/configs/qca955x.ln/ar71xx_wireless_qca_wifi.config .config
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ ls -al .config 
+-rw-rw-r-- 1 mx6user mx6user 2058 Aug 24 16:37 .config
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ make defconfig 
+Checking 'non-root'... ok.
+Checking 'working-make'... ok.
+Checking 'case-sensitive-fs'... ok.
+Checking 'getopt'... ok.
+Checking 'fileutils'... ok.
+Checking 'working-gcc'... ok.
+Checking 'working-g++'... ok.
+Checking 'ncurses'... failed.
+Checking 'zlib'... failed.
+Checking 'gawk'... failed.
+Checking 'unzip'... ok.
+Checking 'bzip2'... ok.
+Checking 'patch'... ok.
+Checking 'perl'... ok.
+Checking 'python'... ok.
+Checking 'wget'... ok.
+Checking 'git'... failed.
+Checking 'gnutar'... ok.
+Checking 'svn'... failed.
+Checking 'gnu-find'... ok.
+Checking 'getopt-extended'... ok.
+Checking 'ocamlc'... failed.
+Checking 'ocamlfind'... failed.
+
+Build dependency: Please install ncurses. (Missing libncurses.so or ncurses.h)
+Build dependency: Please install zlib. (Missing libz.so or zlib.h)
+Build dependency: Please install GNU awk.
+Build dependency: Please install git (git-core) v1.6.5 or later.
+Build dependency: Please install the subversion client.
+Build dependency: Please install the Objective Caml compiler (ocaml-nox) v3.11 or later
+Build dependency: Please install ocaml-findlib.
+
+/home/mx6user/Desktop/20180824/qsdk_shbst_20180824/qsdk/include/prereq.mk:12: recipe for target 'prereq' failed
+Prerequisite check failed. Use FORCE=1 to override.
+/home/mx6user/Desktop/20180824/qsdk_shbst_20180824/qsdk/include/toplevel.mk:123: recipe for target 'tmp/.prereq-build' failed
+make: *** [tmp/.prereq-build] Error 1
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ ifconfig 
+ens33     Link encap:Ethernet  HWaddr 00:0c:29:fe:81:df  
+          inet addr:192.168.0.110  Bcast:192.168.0.255  Mask:255.255.255.0
+          inet6 addr: fe80::819e:10ae:5bf1:ccf0/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:86578 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:12805 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:18612520 (18.6 MB)  TX bytes:2477097 (2.4 MB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:6789 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:6789 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1 
+          RX bytes:363136 (363.1 KB)  TX bytes:363136 (363.1 KB)
+
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ sudo apt-get install gcc g++ binutils patch bzip2 flex make gettext \
+pkg-config unzip zlib1g-dev libc6-dev subversion libncurses5-dev gawk \
+sharutils curl libxml-parser-perl
+
+
+
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ sudo apt-get install gcc g++ binutils patch bzip2 flex make gettext pkg-config unzip zlib1g-dev libc6-dev subversion libncurses5-dev gawk sharutils curl libxml-parser-perl
+[sudo] password for mx6user: 
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+bzip2 is already the newest version (1.0.6-8).
+g++ is already the newest version (4:5.3.1-1ubuntu1).
+gcc is already the newest version (4:5.3.1-1ubuntu1).
+gettext is already the newest version (0.19.7-2ubuntu3).
+libxml-parser-perl is already the newest version (2.44-1build1).
+make is already the newest version (4.1-6).
+pkg-config is already the newest version (0.29.1-0ubuntu1).
+unzip is already the newest version (6.0-20ubuntu1).
+binutils is already the newest version (2.26.1-1ubuntu1~16.04.6).
+libc6-dev is already the newest version (2.23-0ubuntu10).
+patch is already the newest version (2.7.5-1ubuntu0.16.04.1).
+The following additional packages will be installed:
+  libfl-dev libserf-1-1 libsigsegv2 libsvn1 libtinfo-dev m4 zlib1g
+Suggested packages:
+  bison gawk-doc ncurses-doc bsd-mailx | mailx db5.3-util subversion-tools
+The following NEW packages will be installed:
+  curl flex gawk libfl-dev libncurses5-dev libserf-1-1 libsigsegv2 libsvn1 libtinfo-dev m4 sharutils subversion zlib1g-dev
+The following packages will be upgraded:
+  zlib1g
+1 upgraded, 13 newly installed, 0 to remove and 297 not upgraded.
+Need to get 3,190 kB of archives.
+After this operation, 11.9 MB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+0% [Connecting to hk.archive.ubuntu.com (137.189.4.14)]
+0% [Connecting to hk.archive.ubuntu.com (137.189.4.14)]^C
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ ^C
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ ^C
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ sudo apt-get update
+Hit:1 http://hk.archive.ubuntu.com/ubuntu xenial InRelease
+Hit:2 http://security.ubuntu.com/ubuntu xenial-security InRelease
+Hit:3 http://hk.archive.ubuntu.com/ubuntu xenial-updates InRelease
+Hit:4 http://hk.archive.ubuntu.com/ubuntu xenial-backports InRelease
+Reading package lists... Done                     
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ sudo apt-get install gcc g++ binutils patch bzip2 flex make gettext pkg-config unzip zlib1g-dev libc6-dev subversion libncurses5-dev gawk sharutils curl libxml-parser-perl
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+bzip2 is already the newest version (1.0.6-8).
+g++ is already the newest version (4:5.3.1-1ubuntu1).
+gcc is already the newest version (4:5.3.1-1ubuntu1).
+gettext is already the newest version (0.19.7-2ubuntu3).
+libxml-parser-perl is already the newest version (2.44-1build1).
+make is already the newest version (4.1-6).
+pkg-config is already the newest version (0.29.1-0ubuntu1).
+unzip is already the newest version (6.0-20ubuntu1).
+binutils is already the newest version (2.26.1-1ubuntu1~16.04.6).
+libc6-dev is already the newest version (2.23-0ubuntu10).
+patch is already the newest version (2.7.5-1ubuntu0.16.04.1).
+The following additional packages will be installed:
+  libfl-dev libserf-1-1 libsigsegv2 libsvn1 libtinfo-dev m4 zlib1g
+Suggested packages:
+  bison gawk-doc ncurses-doc bsd-mailx | mailx db5.3-util subversion-tools
+The following NEW packages will be installed:
+  curl flex gawk libfl-dev libncurses5-dev libserf-1-1 libsigsegv2 libsvn1 libtinfo-dev m4 sharutils subversion zlib1g-dev
+The following packages will be upgraded:
+  zlib1g
+1 upgraded, 13 newly installed, 0 to remove and 297 not upgraded.
+Need to get 3,190 kB of archives.
+After this operation, 11.9 MB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://hk.archive.ubuntu.com/ubuntu xenial/main amd64 libsigsegv2 amd64 2.10-4 [14.1 kB]
+Get:2 http://hk.archive.ubuntu.com/ubuntu xenial/main amd64 m4 amd64 1.4.17-5 [195 kB]
+Get:3 http://hk.archive.ubuntu.com/ubuntu xenial/main amd64 libfl-dev amd64 2.6.0-11 [12.5 kB]
+Get:4 http://hk.archive.ubuntu.com/ubuntu xenial/main amd64 flex amd64 2.6.0-11 [290 kB]
+Get:5 http://hk.archive.ubuntu.com/ubuntu xenial/main amd64 gawk amd64 1:4.1.3+dfsg-0.1 [398 kB]                                                    
+Get:6 http://hk.archive.ubuntu.com/ubuntu xenial-updates/main amd64 zlib1g amd64 1:1.2.8.dfsg-2ubuntu4.1 [51.2 kB]                                  
+Get:7 http://hk.archive.ubuntu.com/ubuntu xenial/main amd64 libserf-1-1 amd64 1.3.8-1 [45.5 kB]                                                     
+Get:8 http://hk.archive.ubuntu.com/ubuntu xenial-updates/main amd64 curl amd64 7.47.0-1ubuntu2.8 [139 kB]                                           
+Get:9 http://hk.archive.ubuntu.com/ubuntu xenial/main amd64 libtinfo-dev amd64 6.0+20160213-1ubuntu1 [77.4 kB]                                      
+Get:10 http://hk.archive.ubuntu.com/ubuntu xenial/main amd64 libncurses5-dev amd64 6.0+20160213-1ubuntu1 [175 kB]                                   
+Get:11 http://hk.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libsvn1 amd64 1.9.3-2ubuntu1.1 [1,170 kB]                                      
+Get:12 http://hk.archive.ubuntu.com/ubuntu xenial-updates/main amd64 sharutils amd64 1:4.15.2-1ubuntu0.1 [148 kB]                                   
+Get:13 http://hk.archive.ubuntu.com/ubuntu xenial-updates/main amd64 subversion amd64 1.9.3-2ubuntu1.1 [308 kB]                                     
+Get:14 http://hk.archive.ubuntu.com/ubuntu xenial-updates/main amd64 zlib1g-dev amd64 1:1.2.8.dfsg-2ubuntu4.1 [168 kB]                              
+Fetched 3,190 kB in 1min 27s (36.6 kB/s)                                                                                                            
+Selecting previously unselected package libsigsegv2:amd64.
+(Reading database ... 211178 files and directories currently installed.)
+Preparing to unpack .../libsigsegv2_2.10-4_amd64.deb ...
+Unpacking libsigsegv2:amd64 (2.10-4) ...
+Selecting previously unselected package m4.
+Preparing to unpack .../archives/m4_1.4.17-5_amd64.deb ...
+Unpacking m4 (1.4.17-5) ...
+Selecting previously unselected package libfl-dev:amd64.
+Preparing to unpack .../libfl-dev_2.6.0-11_amd64.deb ...
+Unpacking libfl-dev:amd64 (2.6.0-11) ...
+Selecting previously unselected package flex.
+Preparing to unpack .../flex_2.6.0-11_amd64.deb ...
+Unpacking flex (2.6.0-11) ...
+Processing triggers for install-info (6.1.0.dfsg.1-5) ...
+Processing triggers for man-db (2.7.5-1) ...
+Processing triggers for libc-bin (2.23-0ubuntu10) ...
+Processing triggers for doc-base (0.10.7) ...
+Processing 1 added doc-base file...
+Setting up libsigsegv2:amd64 (2.10-4) ...
+Processing triggers for libc-bin (2.23-0ubuntu10) ...
+Selecting previously unselected package gawk.
+(Reading database ... 211338 files and directories currently installed.)
+Preparing to unpack .../gawk_1%3a4.1.3+dfsg-0.1_amd64.deb ...
+Unpacking gawk (1:4.1.3+dfsg-0.1) ...
+Preparing to unpack .../zlib1g_1%3a1.2.8.dfsg-2ubuntu4.1_amd64.deb ...
+Unpacking zlib1g:amd64 (1:1.2.8.dfsg-2ubuntu4.1) over (1:1.2.8.dfsg-2ubuntu4) ...
+Processing triggers for libc-bin (2.23-0ubuntu10) ...
+Setting up zlib1g:amd64 (1:1.2.8.dfsg-2ubuntu4.1) ...
+Processing triggers for man-db (2.7.5-1) ...
+Processing triggers for libc-bin (2.23-0ubuntu10) ...
+Selecting previously unselected package libserf-1-1:amd64.
+(Reading database ... 211485 files and directories currently installed.)
+Preparing to unpack .../libserf-1-1_1.3.8-1_amd64.deb ...
+Unpacking libserf-1-1:amd64 (1.3.8-1) ...
+Selecting previously unselected package curl.
+Preparing to unpack .../curl_7.47.0-1ubuntu2.8_amd64.deb ...
+Unpacking curl (7.47.0-1ubuntu2.8) ...
+Selecting previously unselected package libtinfo-dev:amd64.
+Preparing to unpack .../libtinfo-dev_6.0+20160213-1ubuntu1_amd64.deb ...
+Unpacking libtinfo-dev:amd64 (6.0+20160213-1ubuntu1) ...
+Selecting previously unselected package libncurses5-dev:amd64.
+Preparing to unpack .../libncurses5-dev_6.0+20160213-1ubuntu1_amd64.deb ...
+Unpacking libncurses5-dev:amd64 (6.0+20160213-1ubuntu1) ...
+Selecting previously unselected package libsvn1:amd64.
+Preparing to unpack .../libsvn1_1.9.3-2ubuntu1.1_amd64.deb ...
+Unpacking libsvn1:amd64 (1.9.3-2ubuntu1.1) ...
+Selecting previously unselected package sharutils.
+Preparing to unpack .../sharutils_1%3a4.15.2-1ubuntu0.1_amd64.deb ...
+Unpacking sharutils (1:4.15.2-1ubuntu0.1) ...
+Selecting previously unselected package subversion.
+Preparing to unpack .../subversion_1.9.3-2ubuntu1.1_amd64.deb ...
+Unpacking subversion (1.9.3-2ubuntu1.1) ...
+Selecting previously unselected package zlib1g-dev:amd64.
+Preparing to unpack .../zlib1g-dev_1%3a1.2.8.dfsg-2ubuntu4.1_amd64.deb ...
+Unpacking zlib1g-dev:amd64 (1:1.2.8.dfsg-2ubuntu4.1) ...
+Processing triggers for man-db (2.7.5-1) ...
+Processing triggers for libc-bin (2.23-0ubuntu10) ...
+Processing triggers for install-info (6.1.0.dfsg.1-5) ...
+Setting up m4 (1.4.17-5) ...
+Setting up libfl-dev:amd64 (2.6.0-11) ...
+Setting up flex (2.6.0-11) ...
+Setting up gawk (1:4.1.3+dfsg-0.1) ...
+Setting up libserf-1-1:amd64 (1.3.8-1) ...
+Setting up curl (7.47.0-1ubuntu2.8) ...
+Setting up libtinfo-dev:amd64 (6.0+20160213-1ubuntu1) ...
+Setting up libncurses5-dev:amd64 (6.0+20160213-1ubuntu1) ...
+Setting up libsvn1:amd64 (1.9.3-2ubuntu1.1) ...
+Setting up sharutils (1:4.15.2-1ubuntu0.1) ...
+Setting up subversion (1.9.3-2ubuntu1.1) ...
+Setting up zlib1g-dev:amd64 (1:1.2.8.dfsg-2ubuntu4.1) ...
+Processing triggers for libc-bin (2.23-0ubuntu10) ...
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ make defconfig 
+Checking 'non-root'... ok.
+Checking 'working-make'... ok.
+Checking 'case-sensitive-fs'... ok.
+Checking 'getopt'... ok.
+Checking 'fileutils'... ok.
+Checking 'working-gcc'... ok.
+Checking 'working-g++'... ok.
+Checking 'ncurses'... ok.
+Checking 'zlib'... ok.
+Checking 'gawk'... ok.
+Checking 'unzip'... ok.
+Checking 'bzip2'... ok.
+Checking 'patch'... ok.
+Checking 'perl'... ok.
+Checking 'python'... ok.
+Checking 'wget'... ok.
+Checking 'git'... failed.
+Checking 'gnutar'... ok.
+Checking 'svn'... ok.
+Checking 'gnu-find'... ok.
+Checking 'getopt-extended'... ok.
+Checking 'ocamlc'... failed.
+Checking 'ocamlfind'... failed.
+
+Build dependency: Please install git (git-core) v1.6.5 or later.
+Build dependency: Please install the Objective Caml compiler (ocaml-nox) v3.11 or later
+Build dependency: Please install ocaml-findlib.
+
+/home/mx6user/Desktop/20180824/qsdk_shbst_20180824/qsdk/include/prereq.mk:12: recipe for target 'prereq' failed
+Prerequisite check failed. Use FORCE=1 to override.
+/home/mx6user/Desktop/20180824/qsdk_shbst_20180824/qsdk/include/toplevel.mk:123: recipe for target 
+
+
+sudo apt-get install git 
+sudo apt-get install ocaml-nox
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ make defconfig 
+Checking 'non-root'... ok.
+Checking 'working-make'... ok.
+Checking 'case-sensitive-fs'... ok.
+Checking 'getopt'... ok.
+Checking 'fileutils'... ok.
+Checking 'working-gcc'... ok.
+Checking 'working-g++'... ok.
+Checking 'ncurses'... ok.
+Checking 'zlib'... ok.
+Checking 'gawk'... ok.
+Checking 'unzip'... ok.
+Checking 'bzip2'... ok.
+Checking 'patch'... ok.
+Checking 'perl'... ok.
+Checking 'python'... ok.
+Checking 'wget'... ok.
+Checking 'git'... ok.
+Checking 'gnutar'... ok.
+Checking 'svn'... ok.
+Checking 'gnu-find'... ok.
+Checking 'getopt-extended'... ok.
+Checking 'ocamlc'... ok.
+Checking 'ocamlfind'... ok.
+make -s -C scripts/config conf CC=gcc: build failed. Please re-run make with V=s to see what's going on
+/home/mx6user/Desktop/20180824/qsdk_shbst_20180824/qsdk/include/toplevel.mk:80: recipe for target 'scripts/config/conf' failed
+make: *** [scripts/config/conf] Error 1
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ make defconfig V=s 
+make[1]: Entering directory '/home/mx6user/Desktop/20180824/qsdk_shbst_20180824/qsdk/scripts/config'
+zconf.tab.o: In function `zconflex':
+zconf.tab.c:(.text+0x22f5): undefined reference to `kconf_id_lookup'
+zconf.tab.c:(.text+0x2447): undefined reference to `kconf_id_lookup'
+collect2: error: ld returned 1 exit status
+<builtin>: recipe for target 'conf' failed
+make[1]: *** [conf] Error 1
+make[1]: Leaving directory '/home/mx6user/Desktop/20180824/qsdk_shbst_20180824/qsdk/scripts/config'
+/home/mx6user/Desktop/20180824/qsdk_shbst_20180824/qsdk/include/toplevel.mk:80: recipe for target 'scripts/config/conf' failed
+make: *** [scripts/config/conf] Error 2
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ make defconfig V=s 
+make[1]: Entering directory '/home/mx6user/Desktop/20180824/qsdk_shbst_20180824/qsdk/scripts/config'
+zconf.tab.o: In function `zconflex':
+zconf.tab.c:(.text+0x22f5): undefined reference to `kconf_id_lookup'
+zconf.tab.c:(.text+0x2447): undefined reference to `kconf_id_lookup'
+collect2: error: ld returned 1 exit status
+<builtin>: recipe for target 'conf' failed
+make[1]: *** [conf] Error 1
+make[1]: Leaving directory '/home/mx6user/Desktop/20180824/qsdk_shbst_20180824/qsdk/scripts/config'
+/home/mx6user/Desktop/20180824/qsdk_shbst_20180824/qsdk/include/toplevel.mk:80: recipe for target 'scripts/config/conf' failed
+make: *** [scripts/config/conf] Error 2
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ vi sc
+scpbin.sh  scripts/   
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ vi sc
+scpbin.sh  scripts/   
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ vi scripts/config
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ vi scripts/config/zconf.hash.c
+zconf.hash.c          zconf.hash.c_shipped  
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ vi scripts/config/zconf.hash.c
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ vi scripts/config/zconf.hash.c_shipped 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ make defconfig 
+
+Collecting package info: done
+Can't locate FindBin.pm in @INC (you may need to install the FindBin module) (@INC contains: /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux//usr/lib/perl/site_perl/5.22.1 /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux//usr/lib/perl/vendor_perl/5.22.1 /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux//usr/lib/perl/5.22.1 /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/lib/perl/site_perl/5.22.1/ /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/lib/perl/site_perl/5.22.1 /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/lib/perl/vendor_perl/5.22.1/ /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/lib/perl/vendor_perl/5.22.1 /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/lib/perl/5.22.1/ /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/lib/perl/5.22.1 /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/lib/perl/5.22.1 .) at ./scripts/metadata.pl line 2.
+BEGIN failed--compilation aborted at ./scripts/metadata.pl line 2.
+Failed to build tmp/.config-package.in
+Can't locate FindBin.pm in @INC (you may need to install the FindBin module) (@INC contains: /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux//usr/lib/perl/site_perl/5.22.1 /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux//usr/lib/perl/vendor_perl/5.22.1 /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux//usr/lib/perl/5.22.1 /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/lib/perl/site_perl/5.22.1/ /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/lib/perl/site_perl/5.22.1 /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/lib/perl/vendor_perl/5.22.1/ /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/lib/perl/vendor_perl/5.22.1 /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/lib/perl/5.22.1/ /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/lib/perl/5.22.1 /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/lib/perl/5.22.1 .) at ./scripts/metadata.pl line 2.
+BEGIN failed--compilation aborted at ./scripts/metadata.pl line 2.
+/home/mx6user/Desktop/20180824/qsdk_shbst_20180824/qsdk/include/toplevel.mk:58: recipe for target 'prepare-tmpinfo' failed
+make: *** [prepare-tmpinfo] Error 1
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ 
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$ make defconfig V=s
+Can't locate FindBin.pm in @INC (you may need to install the FindBin module) (@INC contains: /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux//usr/lib/perl/site_perl/5.22.1 /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux//usr/lib/perl/vendor_perl/5.22.1 /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux//usr/lib/perl/5.22.1 /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/lib/perl/site_perl/5.22.1/ /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/lib/perl/site_perl/5.22.1 /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/lib/perl/vendor_perl/5.22.1/ /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/lib/perl/vendor_perl/5.22.1 /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/lib/perl/5.22.1/ /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/lib/perl/5.22.1 /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/lib/perl/5.22.1 .) at ./scripts/metadata.pl line 2.
+BEGIN failed--compilation aborted at ./scripts/metadata.pl line 2.
+Failed to build tmp/.config-package.in
+Can't locate FindBin.pm in @INC (you may need to install the FindBin module) (@INC contains: /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux//usr/lib/perl/site_perl/5.22.1 /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux//usr/lib/perl/vendor_perl/5.22.1 /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux//usr/lib/perl/5.22.1 /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/lib/perl/site_perl/5.22.1/ /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/lib/perl/site_perl/5.22.1 /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/lib/perl/vendor_perl/5.22.1/ /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/lib/perl/vendor_perl/5.22.1 /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/lib/perl/5.22.1/ /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/lib/perl/5.22.1 /opt/upt-mx6dl-eglfs/4.1.15-2.0.1/sysroots/x86_64-pokysdk-linux/usr/lib/perl/5.22.1 .) at ./scripts/metadata.pl line 2.
+BEGIN failed--compilation aborted at ./scripts/metadata.pl line 2.
+/home/mx6user/Desktop/20180824/qsdk_shbst_20180824/qsdk/include/toplevel.mk:58: recipe for target 'prepare-tmpinfo' failed
+make: *** [prepare-tmpinfo] Error 1
+mx6user@mx6vm:~/Desktop/20180824/qsdk_shbst_20180824/qsdk$
+
+
+sudo apt-get install liblocal-lib-perl    ============ not work
+
+sudo apt-get install cpanminus
+
+
+
+
+
+
+
+
+
+
+
+

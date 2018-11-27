@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<script type="text/javascript">
+
+function loadXMLDoc(url)
+{
+var xmlhttp;
+var txt,x,xx,i;
+if (window.XMLHttpRequest)
+{// code for IE7+, Firefox, Chrome, Opera, Safari
+xmlhttp = new XMLHttpRequest();
+}
+else
+{// code for IE6, IE5
+xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+}
+xmlhttp.onreadystatechange = function()
+{
+console.log("is onreadystatechange");
+if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+{
+console.log("is can get information");
+var str = xmlhttp.responseText;
+console.log("str = ", str);
+//document.getElementById("txtCDInfo").innerHTML = xmlhttp.responseText;
+}
+}
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+}
+</script>
+
+</head>
+<body>
+
+<div id="txtCDInfo">
+<button onclick="loadXMLDoc('../cgi-bin/TestQtQjsonFromReturn')">获得 CD 信息</button>
+</div>
+
+</body>
+</html>

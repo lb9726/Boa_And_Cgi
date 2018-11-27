@@ -1,0 +1,470 @@
+大数据前置课程
+	Linux系统，基本命令
+	java语言， javase
+	Mysql--关系型数据库，非关系型数据库Hbase
+讲的东西都是一些基础，以后遇到具体的业务，还是要看具体的情况
+
+Linux->hadoop->Hive->Hbase->Flume-kafka->oozie->hadoop项目->爬虫项目->spark core->spark sql->spark streaming->spark项目——>(机器学习，深度学习，推荐系统)
+
+Linux
+内核，由linus的团队开发
+	www.kernel.org
+	www.netcraft.com
+	手机系统：安卓，ios
+	Linux，unix
+发行版本：
+	内核+工具+软件==》发行版本（社区版，商业版）
+	
+	94-redhat
+			-centos
+	debian-ubuntu
+			-fedora
+	中标麒麟
+	红旗linux
+	
+CentOS: http://www.centos.org/
+Red Hat: http://www.redhat.com 
+Fedora: http://fedoraproject.org/ 
+Debian: http://www.debian.org/ 
+Gentoo: http://www.gentoo.org/ 
+Ubuntu: http://www.ubuntu.com/
+
+mirrors.163.com
+mirrors.sohu.com
+
+用户
+	创建用户 useradd beifeng
+	修改密码 passwd beifeng
+			echo '123456' | passwd --stdin beifeng
+	当创建用户的时候，会创建用户的/home目录
+	查看主机名：hostname
+	修改ip
+	
+四大远程连接工具
+	Xshell（crt）：远程命令行工具
+	Xftp、Filezilla：远程Ftp工具
+	nodeapp++（editplus）：远程文本编辑工具
+	Xmanger：远程界面操作工具
+	
+1、ls:列出当前目录下的文件或目录
+	ls -a
+	ls -l  ====  ll
+	ll -a
+	drwxr-xr-x. 2 beifeng beifeng 4096 Aug 27 11:36 Desktop
+	d:表示一个目录
+	rwx  r-x  r-x 
+	 u    g    o
+	2：当是文件夹的时候，表示文件夹内有多少目录数
+		当他是文件的时候，表示连接数
+	beifeng beifeng：
+	  u        g
+	4096：当是文件夹的时候，4096是默认值
+			当是文件的时候，就表示文件大小
+2、cd（绝对路径，相对路径）
+	cd .
+	cd ..
+	cd /opt/rh
+3、vi/vim
+	有三种模式
+	1、命令行模式
+		快捷键：
+		1)G		跳到最后一行
+		2)gg	跳到第一行
+		3)yy-->2yy 复制或者多行复制 
+		4)p 粘贴
+		5)dd	剪切
+		6)ZZ
+		7)o		在光标的下一行插入数据
+		8)x		删除光标当前的指向
+	2、插入模式
+		i或者o进入
+	3、最后行模式
+		1)set nu		添加行号
+		2)set nonu	去除行号
+		3):/	查找某个字符串
+			eg. :/root 
+			使用n向下查找，使用N向上查找
+		4)替换内容
+			:s/old/new		替换匹配行第一个old为new
+			:s/old/new/g	替换匹配行所有old为new
+			:#,#s/old/new/g	修改对应行号的old为new
+			:%s/old/new/g	全文匹配替换
+		5)w:保存	q:退出		!:强制
+
+vim 可以设置搜索高亮设置
+:set hlsearch 开启高亮
+:set nohlsearch 关闭高亮
+
+
+4、mkdir创建文件夹
+	[root@bigdata-03 datas]# mkdir -p a/b/c/d
+5、rm删除
+	删除文件：rm 1.txt
+			[root@bigdata-03 datas]# rm -f 1.txt 
+	删除目录：rm -rf a/*
+	一般都会直接使用-rf参数，但是要注意系统目录不能删除
+6、cp
+	复制文件：cp 复制的文件路径  要复制到的路径
+		eg.[root@bigdata-03 datas]# cp /etc/passwd ./
+	复制目录
+		eg.[root@bigdata-03 datas]# cp  -r /opt/rh/ ./
+7、mv
+	在当前目录下：
+		[root@bigdata-03 datas]# mv 1.txt  2.txt
+
+	不在当前目录下：
+		[root@bigdata-03 datas]# mv /opt/rh/1.txt  ./
+8、cat查看
+	[root@bigdata-03 datas]# cat 2.txt 
+	more查看
+	more情况：文件内容庞大，提供分页功能查看
+		more /etc/services
+		回车键：一行一行往下翻
+		空格键：一页一页往下翻
+		q：退出
+		常用的用法：more /etc/services  | grep '# service-name'
+9、head：查看文件的头几行
+	[root@bigdata-03 datas]# head passwd 
+	默认打印头十行
+	[root@bigdata-03 datas]# head -2  passwd 
+	中间拼接参数，输入几行
+10、tail：查看文件的末尾行
+	[root@bigdata-03 datas]# tail passwd 
+	默认打印头十行
+	[root@bigdata-03 datas]# tail -2  passwd 
+	中间拼接参数，输入几行
+	[root@bigdata-03 datas]# tail -F passwd 
+	动态读取文件最后行
+11、创建连接
+	1）硬链接    hard link
+		ln passwd passwd_hard
+	2)软连接	soft link
+		ln -s passwd passwd_soft
+	相同点：使用连接，可以保持文件的同步
+	区别：软连接更像快捷方式，源文件丢失，软连接失效，而且软连接不占太多磁盘
+		  硬链接更像文件的复制，源文件丢失，硬链接还是生效的
+12、find：搜索命令
+	1、搜索会消耗大量的系统资源
+	2、语法格式：find 搜索的范围 搜索的内容
+		根据名称查找	
+		[root@bigdata-03 datas]# find / -name init
+		根据名称模糊查询
+		[root@bigdata-03 datas]# find / -name init???     问号可以不使用''
+		[root@bigdata-03 datas]# find / -name '*init*'	  这里就要使用''了
+		[root@bigdata-03 datas]# find / -iname init???
+		根据文件大小
+		[root@bigdata-03 datas]# find / -size -100M
+		[root@bigdata-03 datas]# find / -size +100M
+		根据文件所属者或者所属组
+		[root@bigdata-03 init]# find /home/beifeng -group beifeng
+		[root@bigdata-03 init]# find /home/beifeng -user beifeng
+		根据文件类型
+		[root@bigdata-03 datas]# find /etc -name init*  -type d
+		[root@bigdata-03 datas]# find /etc -name init*  -type f
+13、wc命令
+	查看文件行数
+	直接wc会输出  40   60 1829 /etc/passwd
+	40：行数	60：单词数	1829：字节数
+	[root@bigdata-03 datas]# wc -l pass
+	[root@bigdata-03 datas]# cat pass | wc -l
+14、创建，查看用户信息
+	/etc/passwd
+		beifeng:x:500:500::/home/beifeng:/bin/bash
+		用户名	密码	uid	gid	注释位	宿主目录	可执行的脚本
+	/etc/shadow
+		beifeng:$6$D5CEaLOM$l8EYdWjfGd2aVKzUSlcIC9I7U1UWULbKlzZgSEYPcGMks2sTpJnwpMBDkz1El3uOw19ZpW65gsjyO1g8O6fBk0:17363:0:99999:7:::
+		用户名	密码的加密
+15、创建用户组
+	useradd：创建用户
+	groupadd：创建用户组
+		创建组：groupadd	beifeng001	
+		修改用户的所属组：usermod -g beifeng001 beifeng01
+										gname	uname
+16、修改权限（所有的权限都可以 -R  递归修改该目录下的所有文件的属性）：
+	权限	u	g	o
+	chmod g+w,o+w pass			chmod g-w,o-w pass
+	修改所属者：chown beifeng asd
+				chown -R  beifeng:beifeng /opt/
+	修改所属组：chgrp beifeng asd
+	同时修改：chown root:root asd 
+	权限可以用数字来表示：
+		r：4	w：2	x：1
+		2^2		2^1		2^0
+	chmod 777 asd
+17、man帮助命令
+	man date
+	man chmod
+18、grep过滤
+	－c：只输出匹配行的计数。
+	－i：不区分大小写(只适用于单字符)。
+	－h：查询多文件时不显示文件名。
+	－l：查询多文件时只输出包含匹配字符的文件名。
+	－n：显示匹配行及 行号。
+	－s：不显示不存在或无匹配文本的错误信息。
+	－v：显示不包含匹配文本的所有行。
+	grep -i  --color 'Ro' /etc/passwd  大小写忽略
+19、| 管道符号
+	管道符号会更多的消耗资源
+	grep 'root' /etc/passwd		和		cat /etc/passwd | grep 'root'
+	原因：大部分命令不支持正则表达式，所以要通过管道符拼接，把结果经过正则过滤
+	ifconfig  | grep 'inet addr:'
+	netstat -an | grep 	LINSTEN
+		这里netstat的注释：（推荐网址：http://www.cnblogs.com/ggjucheng/archive/2012/01/08/2316661.html）
+		-a (all)显示所有选项，默认不显示LISTEN相关
+        -t (tcp)仅显示tcp相关选项
+        -u (udp)仅显示udp相关选项
+        -n 拒绝显示别名，能显示数字的全部转化成数字。
+        -l 仅列出有在 Listen (监听) 的服務状态
+        
+        -p 显示建立相关链接的程序名
+        -r 显示路由信息，路由表
+        -e 显示扩展信息，例如uid等
+        -s 按各个协议进行统计
+        -c 每隔一个固定时间，执行该netstat命令。
+
+提示：LISTEN和LISTENING的状态只有用-a或者-l才能看到
+
+20、追加和覆盖
+	追加和覆盖
+	1、追加 >>:以追加的方式将命令正确的结果输出到文件或设备中区
+		date >>1.txt
+		echo '123' >>1.txt
+		假如命令错误
+		data  2>> 1.txt
+	2、覆盖
+		date >1.txt
+		假如命令错误
+		data 2> 1.txt
+21、sudo命令权限（通过which查看命令所在）
+	root用户通过visudo去修改
+	## Allow root to run any commands anywhere
+	root   			 ALL=(ALL)       						ALL  
+	beifeng   		ALL=(ALL)								NOPASSWD: ALL
+      							ALL=
+	用户名	IP或者网段=（身份）也可以不写，默认是root		可执行的命令
+	
+	使用方法sudo service iptables status
+22、压缩和解压缩
+	1、在Linux当中压缩类型有：
+		.gz		.tar	.tar.gz
+	2、gzip命令：只能压缩文件不能压缩目录，压缩文件的格式是 .gz,不保留源文件
+		压缩：gzip pass
+		[beifeng@bigdata-03 datas]$ gzip test/
+		gzip: test/ is a directory -- ignored
+		解压：gunzip pass.gz
+	3、tar（保留源文件）
+		注意：tar本身只是一个打包工具，把多个文件或目录打包成一个文件，方便保存和传输。打包后的文件有一些额外信息，导致文件变大
+		tar -cvf test.tar test/	
+				压缩后的文件	压缩的目录
+		-c:建立一个压缩文件的参数指令
+		-v：显示过程
+		-f:使用后面的名字给文件命名
+	4、压缩成.tar.gz
+	gzip test.tar
+		得到test.tar.gz
+	解压：tar -zxvf test.tar.gz -C /opt/
+		x：解开一个压缩文件的参数指令
+23、rpm和yum还有exe
+	rpm：相当于安装包
+	mount：挂载
+	mount /dev/sr0 /media/
+	在Packages下面有rpm
+	b：block，硬盘就是一个例子
+	c：字符设备文件，鼠标，键盘
+	s：套接字（sockets）这种类型文件通常被 用在网络上的数据连接，是一种数据接口文件，第一属性为（s），通常在 /var/run 这个目录中可以看到这个类型的文件。
+rpm依赖严重：A--B--C--D 
+
+	--安装
+	rpm -ivh httpd-devel-2.2.15-26.el6.centos.x86_64.rpm 失败的
+	rpm -ivh httpd-manual-2.2.15-26.el6.centos.noarch.rpm 	成功
+	--卸载
+	rpm -e httpd-manual-2.2.15-26.el6.centos.noarch.rpm 
+	error: package httpd-manual-2.2.15-26.el6.centos.noarch.rpm is not installed
+	rpm -e httpd-manual-2.2.15-26.el6.centos.noarch
+	--查看
+		（已经安装）rpm -qa | grep 'httpd'
+		（本地有的）ls kernel-*   
+	-a：查询所有套件；
+	-b<完成阶段><套件档>+或-t <完成阶段><套件档>+：设置包装套件的完成阶段，并指定套件档的文件名称； 
+	-c：只列出组态配置文件，本参数需配合"-l"参数使用； 
+	-d：只列出文本文件，本参数需配合"-l"参数使用； 
+	-e<套件档>或--erase<套件档>：删除指定的套件； 
+	-f<文件>+：查询拥有指定文件的套件； 
+	-h或--hash：套件安装时列出标记； 
+	-i：显示套件的相关信息； -i<套件档>或--install<套件档>：安装指定的套件档； 
+	-l：显示套件的文件列表； 
+	-p<套件档>+：查询指定的RPM套件档； 
+	-q：使用询问模式，当遇到任何问题时，rpm指令会先询问用户； 
+	-R：显示套件的关联性信息； 
+	-s：显示文件状态，本参数需配合"-l"参数使用； 
+	-U<套件档>或--upgrade<套件档>：升级指定的套件档； 
+	-v：显示指令执行过程； 
+	-vv：详细显示指令执行过程，便于排错。
+
+yum:使用yum来管理rpm包
+	zlib-static.x86_64           1.2.3-29.el6         base 
+	zsh-html.x86_64       4.3.11-4.el6.centos.2       base 
+	软件包的名称				版本号				仓库名
+	--查看yum list
+	yum list | grep 'httpd'
+	httpd-devel.x86_64                         2.2.15-60.el6.centos.4        @updates
+		在仓库前面有个@ 就是这个包已经安装好了
+	--安装
+	yum -y install 	httpd-devel.x86_64
+	--卸载
+	yum remove httpd-devel.x86_64
+yum仓库
+	--常用的仓库地址 mirrors.163.com
+					mirrors.sohu.com
+	yum的仓库路径/etc/yum.repos.d
+	gpgkey 校验码
+	gpgcheck=1 开启校验，0是关闭校验
+27、磁盘分区
+	查看状态：df -h
+			  fdisk -l
+	sda：
+	/dev/sda1   *           1          64      512000   83  Linux
+	/dev/sda2              64        6528    51915776   8e  Linux LVM
+		cylinders 磁柱
+	第一块磁盘叫sda
+		有两个分区 sda1和sda2	
+		s：接口，例如ssd，scsi，sata	d代表disk磁盘	a：第一块	123：第几个分区
+	1、关闭虚拟机
+	2、新建一个虚拟硬盘
+	3、fdisk /dev/sdb
+	4、进入命令行交互界面，通过m查看帮助信息
+	5、分区	n	
+		e   extended		扩展分区-》还需要逻辑分区
+		p   primary partition (1-4)		主分区
+		多个主分区+一个扩展分区（逻辑分区）<=4	
+		一般来说C盘是主分区，存放系统的文件，然后efgh盘可以是逻辑分区，里面放用户文件
+	6、p  1(第一个主分区)   1（默认从第一个cylinders开始）  +15G
+	7、扩展分区	e	2	1960	选择默认值	
+	可以使用p查看，现在的分区情况
+	8、分扩展分区   n	l	+20G
+	扩展分区要使用逻辑分区---n	l	
+	一个硬盘的主分区也就是包含操作系统启动所必需的文件和数据的硬盘分区，要在硬盘上安装操作系统，则该硬盘必须得有一个主分区。
+	扩展分区也就是除主分区外的分区，但它不能直接使用，必须再将它划分为若干个逻辑分区才行。逻辑分区也就是我们平常在操作系统中所看到的D、E、F等盘。
+	这时候可以查看下fdisk -l，但是数据其实还没有写入
+	9、w  保存退出
+	10、fdisk -l 查看分区   如果没有读到   partx -a /dev/sdb  或者重启
+		这里最好重启下	
+	11、格式化 mkfs.ext4 /dev/sdb1
+		ext2	ext3	ext4	xfs(centos7)
+	12、挂载 mount /dev/sdb1  /mnt/sdb1（事先创建好的目录，但是挂载只是临时生效，这是访问这个分区的唯一入口）	查看已挂载的分区情况  df -h
+	13、umount /mnt  卸载
+	14、永久挂载  修改 /etc/fstab	(别乱改，搞事情)
+	/dev/sdb1	/mnt/sdb1	ext4	defaults	0 0
+	名称		挂载点	类型	默认		0 0
+	http://www.cnblogs.com/jjzd/p/5634171.html
+28、关闭防火墙
+	iptables	selinux（子安全系统）
+	service iptables stop	临时关闭
+	chkconfig iptables off	开机不启动
+	
+	vi /etc/sysconfig/selinux
+	selinux=disabled
+
+	vi /etc/inittab 
+	#   0 - halt (Do NOT set initdefault to this):关机
+	#   1 - Single user mode：使用单用户模式
+	#   2 - Multiuser, without NFS (The same as 3, if you do not have networking)：使用多用户
+	#   3 - Full multiuser mode：完全多用户
+	#   4 - unused
+	#   5 - X11：图形化
+	#   6 - reboot (Do NOT set initdefault to this)：重启
+	
+	把默认值修改为3，就会开启命令行模式
+
+常用的系统命令：
+ifconfig
+top
+free -m
+netstat [-an  ltcp]	查看端口情况
+	-》查看网络状态，每个服务都各自定义了不同的传输协议
+	-》-t：表示TCP网络协议，三次握手，更安全
+	-》-u：表示UDP网络协议，直接传输数据，对方能不能收到，就看缘分了，传输快，但是不稳定。
+		-》即时通讯，视频什么的都用udp----例如qq
+	-》-l：表示监听，监听短裤
+	-》-r：表示路由器，查看网关
+	-》-n：表示ip地址和端口号（用ip和端口号显示）
+	第一种用法：
+		netstat -tlun：查看已经开启的监听端口
+	第二种用法：
+		netstat -an：查看已经开启的监听端口以及正在连接的网络程序
+			tcp        0     52 192.168.163.101:22（这个是固定的，但是可以修改）          192.168.163.1:62807（这个端口是随机分配的）         ESTABLISHED 这个就是xshell链接上的
+	第三种用法：
+		netstat -rn：查询路由信息，可以看到网关
+			也可以使用route -n
+ps -ef	查看进程
+kill -15	正常杀除  
+	 -9 	强制杀除
+	  kill -9 2204
+	现实中的场景：某个程序占用了你想要用的端口，怎么查看？
+		ps -aux | grep hadoop    查看进程的pid
+		ps -ef | grep java		查看所有java的进程
+		netstat -apn | grep 8020
+		ps -ef | grep 8020
+		kill -9 2204	把没用的进程杀掉
+		
+		
+29、正则表达式
+	单引号和双引号都能关闭shell对特殊字符的处理。
+	不同的是，双引号没有单引号严格，单引号关闭所有有特殊作用的字符，而双引号只要求shell忽略大多数，
+	具体的说，就是①美元符号②反引号③反斜杠，这3种特殊字符不被忽略。 
+	不忽略美元符号意味着shell在双引号内部也进行变量名替换。
+	单引号和双引号：http://blog.csdn.net/fdl19881/article/details/7849286
+	通配符：".","*","?","[]"
+		应用：文件名匹配
+		例如 touch aa
+			ls	aa  或者 ls aa*
+	正则：grep sed awk
+		常用："^","$",".","*","\","\>","\<"
+	 案例演示：
+		1、显示文件里所有包含数字的行：
+			grep [0-9] /etc/passwd
+		2、显示文件里有root的行：	
+			cat /etc/passwd | grep  --color [r][o][o][t]
+		3、显示文件中有r或者o或者t的行
+			cat /etc/passwd | grep  --color [rot]
+		4、匹配三个数字
+			cat /etc/passwd | grep  --color '[1-9][0-9][0-9]'
+		5、匹配一个小写一个大写
+			cat /etc/passwd | grep  --color '[a-z][A-Z]'
+		6、匹配字符串
+			cat /etc/passwd | grep  --color ':[5][0-9][1-9]:'
+		7、对比	^[]和[^]区别
+			cat /etc/passwd | grep  --color '^[rot]' -->匹配开头为r或者o或者t的行
+			cat /etc/passwd | grep  --color '[^rot]' -->匹配非r或者非o或者非t的行
+		8、以r或者o开头以n结尾的行
+			cat /etc/passwd | grep  --color '^[ro].*n$'
+		9、"\>"和"\<" 以什么为开头，以什么为结尾
+			touch abc
+			touch asdasdabc
+			touch abcaaasda
+			ls | grep --color  "\<abc"
+			ls | grep --color  "abc\>"
+		10、{}
+			{}一般用来表示匹配的长度
+				root\{n\}	用来匹配前面roo后面t的出现次数。n为次数
+				root\{n,\}	含义同上，但次数最少为n
+				root\{n,m\}	含义同上，但t出现次数在n与m之间
+				echo 'roott' | grep 'root\{2\}'----》匹配roo后面出现的t的个数
+			echo '19399' | grep --color  '[1-9][0-9][0-9]\{2\}'
+			echo '19399' | grep -v  --color  '[1-9][0-9][0-9]\{2\}'
+		11、获取ip
+			ifconfig | grep 'inet addr:' |  grep -v '127.0.0.1' | sed 's/inet addr://g' | sed 's/Bcast.*//g'| tr -d ' ' >>ip.txt
+			
+			awk:http://www.cnblogs.com/ggjucheng/archive/2013/01/13/2858470.html
+			sed:http://www.cnblogs.com/dong008259/archive/2011/12/07/2279897.html
+			正则：http://blog.csdn.net/renwotao2009/article/details/50937038
+			http://dcx.sybase.com/1101/zh/dbreference_zh11/rf-sqllanguage-s-4915351.html
+http://man.linuxde.net/	
+	
+	
+
+
+
+
+
+	

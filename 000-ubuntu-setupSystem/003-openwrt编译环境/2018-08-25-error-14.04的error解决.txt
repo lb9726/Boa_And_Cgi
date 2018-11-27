@@ -1,0 +1,114 @@
+libo@ubuntu:~/Desktop/000-emulation/20180824/qsdk_shbst_20180824/qsdk$ make package/sysmlinks
+Checking 'working-make'... ok.
+Checking 'case-sensitive-fs'... ok.
+Checking 'getopt'... ok.
+Checking 'fileutils'... ok.
+Checking 'working-gcc'... ok.
+Checking 'working-g++'... ok.
+Checking 'ncurses'... ok.
+Checking 'zlib'... ok.
+Checking 'gawk'... ok.
+Checking 'unzip'... ok.
+Checking 'bzip2'... ok.
+Checking 'patch'... ok.
+Checking 'perl'... ok.
+Checking 'python'... ok.
+Checking 'wget'... ok.
+Checking 'git'... ok.
+Checking 'gnutar'... ok.
+Checking 'svn'... ok.
+Checking 'gnu-find'... ok.
+Checking 'getopt-extended'... ok.
+Checking 'ocamlc'... ok.
+Checking 'ocamlfind'... failed.
+Checking 'non-root'... ok.
+
+Build dependency: Please install ocaml-findlib.
+
+https://blog.csdn.net/aviat0r/article/details/39557295
+sudo add-apt-repository ppa:avsm/ppa
+sudo apt-get update
+sudo apt-get install curl build-essential m4 ocaml opam
+
+sudo apt-get install ocaml ocaml-nox ocaml-native-compilers ocaml-doc ocaml-findlib oasis libpcre-ocaml-dev
+
+
+
+
+libo@ubuntu:~/Desktop/000-emulation/20180824/qsdk_shbst_20180824/qsdk$ sudo apt-get install ocaml-findlib
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+Some packages could not be installed. This may mean that you have
+requested an impossible situation or if you are using the unstable
+distribution that some required packages have not yet been created
+or been moved out of Incoming.
+The following information may help to resolve the situation:
+
+The following packages have unmet dependencies:
+ ocaml-findlib : Depends: libfindlib-ocaml but it is not going to be installed
+                 Recommends: libfindlib-ocaml-dev but it is not going to be installed
+E: Unable to correct problems, you have held broken packages.
+
+sudo apt-get install libfindlib-ocaml
+
+libo@ubuntu:~/Desktop/000-emulation/20180824/qsdk_shbst_20180824/qsdk$ sudo apt-get install libfindlib-ocaml
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+Some packages could not be installed. This may mean that you have
+requested an impossible situation or if you are using the unstable
+distribution that some required packages have not yet been created
+or been moved out of Incoming.
+The following information may help to resolve the situation:
+
+The following packages have unmet dependencies:
+ libfindlib-ocaml : Depends: ocaml-base-nox-4.01.0
+E: Unable to correct problems, you have held broken packages.
+
+sudo apt-get install ocaml-base-nox-4.01.0
+
+
+
+
+
+libo@ubuntu:~/Desktop/000-emulation/20180824/qsdk_shbst_20180824/qsdk$ sudo apt-get install ocaml ocaml-nox ocaml-native-compilers ocaml-doc ocaml-findlib oasis libpcre-ocaml-dev
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+ocaml-doc is already the newest version.
+ocaml is already the newest version.
+ocaml-native-compilers is already the newest version.
+ocaml-nox is already the newest version.
+Some packages could not be installed. This may mean that you have
+requested an impossible situation or if you are using the unstable
+distribution that some required packages have not yet been created
+or been moved out of Incoming.
+The following information may help to resolve the situation:
+
+The following packages have unmet dependencies:
+ libpcre-ocaml-dev : Depends: libpcre-ocaml-36gi0
+                     Depends: ocaml-nox-4.01.0
+ oasis : Depends: libfindlib-ocaml-ugx61
+         Depends: liboasis-ocaml-jxds2
+         Depends: libodn-ocaml-he6i3
+         Depends: ocaml-base-nox-4.01.0
+         Depends: liboasis-ocaml-dev but it is not going to be installed
+ ocaml-findlib : Depends: libfindlib-ocaml but it is not going to be installed
+                 Recommends: libfindlib-ocaml-dev but it is not going to be installed
+E: Unable to correct problems, you have held broken packages.
+
+
+sudo apt-get install ocaml ocaml-findlib -y
+报错了，尝试sudo apt-get dist-upgrade
+https://blog.csdn.net/wangyezi19930928/article/details/54928201  update 和 upgrade区别
+还是报failed尝试自己编译源码安装
+https://launchpad.net/ubuntu/+source/findlib/1.7.3-2
+下载了findlib_1.7.3.orig.tar.gz 解压后根据INSTALL的方法试了一下
+./configure
+make all
+make install 
+再次执行make deconfig之后执行ok了
+
+下一步执行编译 make V=s -j 16
+
